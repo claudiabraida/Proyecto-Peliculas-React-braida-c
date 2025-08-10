@@ -11,7 +11,6 @@ export default function ListPopularMovies(id) {
 
   },[id]);
  
-
   return <>
     <div style={{display: "flex", flexDirection: "column"}}>
     <h2>POPULAR MOVIES</h2>
