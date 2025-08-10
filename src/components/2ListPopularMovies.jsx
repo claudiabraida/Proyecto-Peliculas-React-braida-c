@@ -16,11 +16,11 @@ export default function ListPopularMovies(id) {
     <div style={{display: "flex", flexDirection: "column"}}>
     <h2>POPULAR MOVIES</h2>
       {
-        movies.map(popular => <div key={popular.id}>
-          <img src={`https://image.tmdb.org/t/p/w200/${popular.poster_path}`} alt="" />
-          <p>{popular.title}</p> 
-          <button onClick={()=> navigate(`/movie/${popular.id}`)}>VER DETALLE</button>
-          <p>{popular.site}</p>
+        movies.map(({id,poster_path,title,site}) => <div key={id}>
+          <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
+          <p>{title}</p> 
+          <button onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
+          <p>{site}</p>
         </div>)
       }
     </div>

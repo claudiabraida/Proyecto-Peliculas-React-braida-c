@@ -18,8 +18,8 @@ export default function DetailMovies(id) {
     <p>{movieId.title}</p>
     <p>{movieId.overview}</p>
 
-    {movieId.genres && movieId.genres.map(g => <ul key={g.name} id={g.name}>
-       <li>{g.name}</li>
+    {movieId.genres && movieId.genres.map(({name}) => <ul key={name} id={name}>
+       <li>{name}</li>
         </ul>
     )}
     <p>Nombre original: {movieId.original_title}</p>

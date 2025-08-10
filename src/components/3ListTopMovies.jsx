@@ -15,10 +15,10 @@ export default function TopMovies(id) {
     <div style={{display: "flex", flexDirection: "column"}}>
     <h2> TOP MOVIES</h2>
     {
-      movies.map(topMovie => <div key={topMovie.id} id={topMovie.id}>
-      <img src={`https://image.tmdb.org/t/p/w200/${topMovie.poster_path}`} alt="" />
-      <p>{topMovie.title}</p>
-      <button  onClick={()=> navigate(`/movie/${topMovie.id}`)}>VER DETALLE</button>
+      movies.map(({id,poster_path,title}) => <div key={id} id={id}>
+      <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
+      <p>{title}</p>
+      <button  onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
       </div>)
     }
   </div>

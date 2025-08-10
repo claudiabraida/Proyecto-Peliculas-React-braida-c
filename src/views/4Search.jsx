@@ -18,10 +18,10 @@ export default function Search() {
     <input  onInput={(e)=> searchTitleMovie(e.target.value)} type="text" />
     <div style={{display: "flex", flexWrap: "wrap", justifyContent : "space-around"}}>
       {
-        movies.map(searchMovie => <div key={searchMovie.id} id={searchMovie.id}>
-          <img src={`https://image.tmdb.org/t/p/w200/${searchMovie.poster_path}`} alt="" />
-          <button  onClick={()=> navigate(`/movie/${searchMovie.id}`)}>DETALLE</button>
-          <p>{searchMovie.title}</p> 
+        movies.map(({id,poster_path,title}) => <div key={id} id={id}>
+          <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
+          <button  onClick={()=> navigate(`/movie/${id}`)}>DETALLE</button>
+          <p>{title}</p> 
         </div>)
       }
     </div>
