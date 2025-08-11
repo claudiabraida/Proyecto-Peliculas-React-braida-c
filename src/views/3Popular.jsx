@@ -1,13 +1,16 @@
 import useMovies from "../hooks/useMovies";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
+import { FavoriteContext } from "../context/FavoriteContext";
 
-export default function Popular() {
-  const {getPopularMovies, movies} = useMovies()
+export default function Popular(id) {
+  const {getPopularMovies, movies} = useMovies();
+  const {toogleFavorite, existsInFavorites}  = useContext(FavoriteContext);
   const navigate = useNavigate();
 
+
   useEffect(()=>{
-    getPopularMovies();
+    getPopularMovies(id);
     
    },[])
 
@@ -15,10 +18,15 @@ export default function Popular() {
     <h1>POPULAR MOVIES</h1>
     <div style={{display: "flex", flexWrap: "wrap", justifyContent : "space-around"}}>
       {
-        movies.map(({id,poster_path,title}) => <div key={id} id={id}>
-          <button  onClick={()=> navigate(`/movie/${id}`)}>DETALLE</button>
+        movies.map(({id, poster_path, title, genres, original_title}) =>
+          <div key={id} id={id}>
           <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
           <p style={{width: "200px"}}>{title}</p> 
+          
+          <button  onClick={()=> navigate(`/movie/${id}`)}>DETALLE</button>
+          <button style={{border:"none",backgroundColor:"transparent"}} 
+           onClick={()=> toogleFavorite({id, poster_path, title, genres, original_title}) + navigate(`/favorites-movies/${id}`)}>{existsInFavorites(id) ? "💙" :  "🤍"}</button>
+         
          </div>)
       }
      </div>

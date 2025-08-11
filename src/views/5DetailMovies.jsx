@@ -23,7 +23,6 @@ export default function DetailMovies(id) {
         </ul>
     )}
     <p>Nombre original: {movieId.original_title}</p>
-
     </div>
   </>
 }
