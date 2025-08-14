@@ -11,10 +11,9 @@ export default function useMovies() {
   
   const {id} = useParams();
 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState({});
-  
-  const page = [1];
+  const [page, setPage] = useState(1);
   
   /* ************************** NEW MOVIES ************************************* */
   async function getNewMovies() {
@@ -34,13 +33,14 @@ export default function useMovies() {
   /* ************************** POPULAR MOVIES ************************************* */
   async function getPopularMovies() {
     try {
-      const {data } = await axios (`https://api.themoviedb.org/3/movie/popular?language=es-ES`,{
+      const {data } = await axios (`https://api.themoviedb.org/3/movie/popular?language=es-ES&page=${page}`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
       console.log("POPULAR-MAS", data.results)
       setMovies(data.results)
+ 
     } catch (error) {
       console.log(error)
     }
@@ -91,13 +91,20 @@ export default function useMovies() {
     }
   }
 
- /* ************************** NEW MOVIES ************************************* */  
+ /* ************************** FUNCTIONS ************************************* */  
   function searchTitleMovie (title) {
     getSearchMovies(title)
   }
 
   function detailMovieId (id) {
     setMovieId(id)
+  }
+  
+  function nextpage (numPage) {
+    setPage()
+    // if(page + 1 > 10) {
+    //   setPage(page + 1)
+    // }
   }
 
  /* *************************************************************** */
@@ -114,7 +121,10 @@ export default function useMovies() {
 
   getDetailMovieId,
   movieId,
-  detailMovieId
+  detailMovieId,
+
+  nextpage,
+  
 
   } 
 }  
