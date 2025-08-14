@@ -1,10 +1,10 @@
 import { useNavigate } from "react-router"
 import { useParams } from "react-router";
-
 export default function NavBarMovies() {
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const {id} = useParams();
+  
 
   return (
     <>
@@ -15,7 +15,7 @@ export default function NavBarMovies() {
       <button onClick={()=> navigate("new-movies")}>Últimos Lanzamientos </button>
       <button onClick={()=> navigate("popular")}>Populares</button>
       <button onClick={()=> navigate("search")}>Buscar </button>
-      <button onClick={()=> navigate(`/favorites-movies/${id}`)}>FAVORITOS</button>
+      <button style={{border:"none",backgroundColor:"transparent"}} onClick={()=> navigate(`/favorites-movies/`)}>💙</button>
       </div>
     </>
   )

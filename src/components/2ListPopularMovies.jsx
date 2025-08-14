@@ -10,22 +10,24 @@ export default function ListPopularMovies(id) {
 
   useEffect(()=>{
     getPopularMovies(id);
-
+    
   },[id]);
  
   return <>
     <div style={{display: "flex", flexDirection: "column"}}>
     <h2>POPULAR MOVIES</h2>
       {
-        movies.map(({id, poster_path, title, genres, original_title }) => <div key={id}>
-
+        movies.length == 0 ? <h1 style={{color: "red"}}>LOADING</h1> 
+        : movies.map(({id, poster_path, title, genres, original_title }) => 
+        <div key={id}>
           <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
           <p>{title}</p> 
           <button onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
 
           <button style={{border:"none",backgroundColor:"transparent"}} 
             onClick={()=> toogleFavorite({id, poster_path, title, genres, original_title}) 
-            + navigate(`/favorites-movies/${id}`)}>{existsInFavorites(id) ? "💙" :  "🤍"}
+            // + navigate(`/favorites-movies/${id}`)
+            }>{existsInFavorites(id) ? "💙" :  "🤍"}
           </button>
         </div>)
       }

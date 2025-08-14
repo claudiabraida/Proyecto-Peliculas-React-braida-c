@@ -26,7 +26,8 @@ export default function TopMovies(id) {
 
       <button style={{border:"none",backgroundColor:"transparent"}} 
         onClick={()=> toogleFavorite({id, poster_path, title, genres, original_title}) 
-        + navigate(`/favorites-movies/${id}`)}>{existsInFavorites(id) ? "💙" :  "🤍"}
+        // + navigate(`/favorites-movies/${id}`)
+        }>{existsInFavorites(id) ? "💙" :  "🤍"}
       </button>
 
       </div>)
