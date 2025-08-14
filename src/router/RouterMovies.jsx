@@ -25,7 +25,7 @@ export default function RouterMovies() {
         <Route path="popular" element={<Popular/>}/>
         <Route path="search" element={<Search/>}/>
         <Route path="/movie/:id" element={<DetailMovies/>}/>
-        <Route path="/favorites-movies/:id" element={<FavoritesMovies/>}/>
+        <Route path="favorites-movies" element={<FavoritesMovies/>}/>
         <Route path="*" element={<h2>ERROR 404 NOT FOUND</h2>} />
       </Routes>
       <Footer/>

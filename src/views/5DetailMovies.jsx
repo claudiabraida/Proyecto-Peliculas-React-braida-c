@@ -18,10 +18,12 @@ export default function DetailMovies(id) {
     <p>{movieId.title}</p>
     <p>{movieId.overview}</p>
 
-    {movieId.genres && movieId.genres.map(({name}) => <ul key={name} id={name}>
-       <li>{name}</li>
-        </ul>
-    )}
+    {
+      movieId.genres && movieId.genres.map(({name}) =>
+      <ul key={name} id={name}>
+        <li>{name}</li>
+      </ul>)
+    }
     <p>Nombre original: {movieId.original_title}</p>
     </div>
   </>
