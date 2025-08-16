@@ -11,16 +11,16 @@ export default function NewMovies(id) {
   useEffect(()=>{
     getNewMovies(id);
     
-    
-
   },[])
 
   return <>
     <h1>ÚLTIMOS LANZAMIENTOS</h1>
     <div style={{display: "flex", flexWrap: "wrap", justifyContent : "space-around"}}>
     {
-        movies.length == 0 ? <h1 style={{color: "red"}}>LOADING</h1> : movies.map(({id,poster_path,title, genres, original_title}) => <div key={id} id={id}>
+        movies.length == 0 ? <h1 style={{color: "red"}}>LOADING</h1>
+        : movies.map(({id,poster_path,title, genres, original_title}) => <div key={id} id={id}>
         <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
+        
         <button onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
         <button style={{border:"none",backgroundColor:"transparent"}} 
          onClick={()=> toogleFavorite({id, poster_path, title, genres, original_title}) 

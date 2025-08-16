@@ -3,7 +3,7 @@ import { BrowserRouter, Routes,Route } from "react-router";
 
 /* *************** COMPONENTS *************** */
 import NavBar from "../components/1NavBar";
-import Footer from "../components/4Footer";
+import Footer from "../components/5Footer";
 
 /* ***************** VIEWS ***************** */
 import Home from "../views/1Home";
@@ -26,6 +26,7 @@ export default function RouterMovies() {
         <Route path="search" element={<Search/>}/>
         <Route path="/movie/:id" element={<DetailMovies/>}/>
         <Route path="favorites-movies" element={<FavoritesMovies/>}/>
+        <Route path="trailer/:id" element={<TrailerMovies/>}/>
         <Route path="*" element={<h2>ERROR 404 NOT FOUND</h2>} />
       </Routes>
       <Footer/>

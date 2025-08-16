@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react"
 import { FavoriteContext } from "../context/FavoriteContext"
+import { useNavigate } from "react-router";
 
 export default function FavoritesMovies() {
   const {favorites, toogleFavorite} = useContext(FavoriteContext);
+  const navigate = useNavigate();
 
 
   return <>
@@ -27,6 +29,8 @@ export default function FavoritesMovies() {
           <button style={{border:"none",backgroundColor:"transparent"}} 
             onClick={()=> toogleFavorite({id})}>💙
           </button>
+        <button onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
+
         </div>
       )
     }

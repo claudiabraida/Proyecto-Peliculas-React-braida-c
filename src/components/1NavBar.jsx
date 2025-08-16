@@ -1,11 +1,8 @@
 import { useNavigate } from "react-router"
-import { useParams } from "react-router";
+
 export default function NavBarMovies() {
 
   const navigate = useNavigate();
-  const {id} = useParams();
-  
-
   return (
     <>
       <h1>1-NAV BAR</h1>
