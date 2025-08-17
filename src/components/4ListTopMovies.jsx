@@ -16,7 +16,7 @@ export default function TopMovies(id) {
   },[id])
 
   return <>
-    <div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "column", alignItems:"center", backgroundColor: "black", color: "whitesmoke"}}>
     <h2> TOP MOVIES</h2>
     {
       movies.map(({id,poster_path,title, genres, original_title}) => <div key={id} id={id}>

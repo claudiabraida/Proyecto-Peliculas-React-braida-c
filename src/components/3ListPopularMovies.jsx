@@ -3,18 +3,18 @@ import { useNavigate } from "react-router";
 import useMovies from "../hooks/useMovies";
 import { FavoriteContext } from "../context/FavoriteContext";
 
-export default function ListPopularMovies(id) {
+export default function ListPopularMovies() {
   const {getPopularMovies, movies} = useMovies()
   const {toogleFavorite, existsInFavorites}  = useContext(FavoriteContext);
   const navigate = useNavigate();
 
   useEffect(()=>{
-    getPopularMovies(id);
+    getPopularMovies();
     
-  },[id]);
+  },[]);
  
   return <>
-    <div style={{display: "flex", flexDirection: "column"}}>
+    <div style={{display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "black", color: "whitesmoke"}}>
     <h2>POPULAR MOVIES</h2>
       {
         movies.length == 0 ? <h1 style={{color: "red"}}>LOADING</h1> 

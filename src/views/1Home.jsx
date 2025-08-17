@@ -6,11 +6,11 @@ export default function Home() {
   
   return <>
   <h1>HOME</h1>
-  <div  style={{textAlign:"center", backgroundColor: "blue", height:"800vh"}}>
+  <div  style={{textAlign:"center", backgroundColor: "#191545", height:"750vh"}}>
 
     <CarouselMovies/>
   </div>
-  <div style={{display:"flex", justifyContent: "center"}}>
+  <div style={{display:"flex", justifyContent: "space-around"}}>
     <ListPopularMovies/>
     <ListTopMovies/>
   </div>

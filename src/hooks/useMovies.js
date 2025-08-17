@@ -16,36 +16,24 @@ export default function useMovies() {
   const [trailers, setTrailers] = useState([]);
   const [page, setPage] = useState(1);
   
+  
   /* ************************** NEW MOVIES ************************************* */
   async function getNewMovies() {
     try {
-      const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?language=es-ES`,{
+      const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?&page=${page}`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
       console.log("ULTIMOS LANZAMIENTOS", data.results)
       setMovies(data.results)
+      
+      setPage(data.page)
+      console.log("MOSTRAE PAGINASSSSS", data.page)
     } catch (error) {
       console.log(error)
     }
   }
-    
-  /* ************************** RECOMMENDATIONS MOVIES ************************************* */
-  // async function getRecommendationsMovies() {
-  //   try {
-  //     const {data } = await axios (`https://api.themoviedb.org/3/movie/${id}/recommendations`,{
-  //       headers: {
-  //         Authorization: `Bearer ${AuthorizationTmdb}`
-  //       }
-  //     })
-  //     console.log("RECOMENDADAS", data.results)
-  //     setMovies(data.results)
- 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
 
   /* ************************** POPULAR MOVIES ************************************* */
   async function getPopularMovies() {
@@ -112,7 +100,7 @@ export default function useMovies() {
   /* ************************** TRAILER MOVIE ************************************* */
   async function getTrailersMovies() {
     try {
-      const {data} = await axios (`https://api.themoviedb.org/3/movie/${id}/videos?language=es-ES`,{
+      const {data} = await axios (`https://api.themoviedb.org/3/movie/${id}/videos`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
@@ -128,21 +116,21 @@ export default function useMovies() {
     getSearchMovies(title)
   }
 
-  // function detailMovieId (id) {
-  //   setMovieId(id)
-  // }
   
-    function carouselNumberMovies (movie) {
-    setMovies(movie)
-  }
-  function nextpage (numPage) {
-    setPage()
-    // if(page + 1 > 10) {
-    //   setPage(page + 1)
-    // }
+
+  function nextPage (page) {
+    setPage(page + 1)
+    if(page + 1 <= 0) {
+      setPage(page)
+    }
   }
 
-
+  function prevPage (page) {
+    setPage(page - 1)
+    if(page - 1 <= 0) {
+      setPage(page)
+    }
+  }
  /* *************************************************************** */
   return {
   page,
@@ -162,9 +150,9 @@ export default function useMovies() {
   
   trailers,
   getTrailersMovies,
-  nextpage,
+  nextPage,
+  prevPage
   
-
   } 
 }  
 
