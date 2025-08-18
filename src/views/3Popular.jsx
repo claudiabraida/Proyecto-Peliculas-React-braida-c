@@ -1,12 +1,23 @@
 import useMovies from "../hooks/useMovies";
+import { FavoriteContext } from "../context/FavoriteContext";
+/* ______________________________________________________ */
+
 import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { FavoriteContext } from "../context/FavoriteContext";
+/* ________________________ MUI ________________________ */
+
+import {Pagination , Stack} from '@mui/material';
+/* ______________________________________________________ */
+
 
 export default function Popular() {
-  const { getPopularMovies, movies, nextPage, prevPage, page } = useMovies();
+  const { getPopularMovies, movies, changePage, page, totalPages } = useMovies();
   const { toogleFavorite, existsInFavorites }  = useContext(FavoriteContext);
   const navigate = useNavigate();
+
+  const handleChange = (event, value) => {
+    changePage(value);
+  };
 
   useEffect(()=>{
     getPopularMovies();
@@ -24,7 +35,7 @@ export default function Popular() {
           }>{existsInFavorites(id) ?  "💙" :  "🤍"}
           </button>
 
-          <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" />
+          <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" onClick={()=> navigate(`/movie/${id}`)} />
           <p style={{width: "200px"}}>{title}</p> 
           <button  onClick={()=> navigate(`/movie/${id}`)}>DETALLE</button>
           
@@ -32,7 +43,12 @@ export default function Popular() {
       }
      </div>
 
-    <button onClick={()=> prevPage(page)}>{page}anterior</button>
-    <button onClick={()=> nextPage(page)}>{page}siguiente</button>
+    <Stack spacing={2}>
+      <Pagination  
+      count={totalPages}
+      page={page}
+      onChange={handleChange}
+      color="primary" />
+    </Stack>
   </>
 }

@@ -15,19 +15,21 @@ export default function useMovies() {
   const [movieId, setMovieId] = useState({});
   const [trailers, setTrailers] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   
   
   /* ************************** NEW MOVIES ************************************* */
   async function getNewMovies() {
     try {
-      const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?&page=${page}`,{
+      const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?language=es-ES&page=${page}`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
       console.log("ULTIMOS LANZAMIENTOS", data.results)
       setMovies(data.results)
-      
+      console.log("total paginasss", data.total_pages)
+      setTotalPages(data.total_pages)
       setPage(data.page)
       console.log("MOSTRAE PAGINASSSSS", data.page)
     } catch (error) {
@@ -45,7 +47,9 @@ export default function useMovies() {
       })
       console.log("POPULAR-MAS", data.results)
       setMovies(data.results)
- 
+      setTotalPages(data.total_pages)
+      setPage(data.page)
+      console.log("MOSTRAE PAGINASSSSS", data.page) 
     } catch (error) {
       console.log(error)
     }
@@ -117,20 +121,14 @@ export default function useMovies() {
   }
 
   
+// function changeTotalPages (page) {
+// }
 
-  function nextPage (page) {
-    setPage(page + 1)
-    if(page + 1 <= 0) {
-      setPage(page)
-    }
-  }
+function changePage (page) {
+  setPage(page)
+}
 
-  function prevPage (page) {
-    setPage(page - 1)
-    if(page - 1 <= 0) {
-      setPage(page)
-    }
-  }
+
  /* *************************************************************** */
   return {
   page,
@@ -150,8 +148,8 @@ export default function useMovies() {
   
   trailers,
   getTrailersMovies,
-  nextPage,
-  prevPage
+  changePage,
+  totalPages
   
   } 
 }  

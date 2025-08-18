@@ -23,7 +23,7 @@ export default function CarouselMovies(id) {
         <div key={id} id={id}>
           <img  src={`https://image.tmdb.org/t/p/w200/${backdrop_path}`} alt="" />
           <h4 style={{width: "200px"}}>{title}</h4> 
-        <button onClick={()=> navigate(`/movie/${id}`)}>VER DETALLE</button>
+        <button onClick={()=> navigate(`/movie/${id}`)}>VER MAS</button>
           
         </div>
         
