@@ -13,12 +13,12 @@ export default function TrailerMovies() {
 
    return <>
     <h1>TRAILER</h1>
-    <div>
+    <div >
       {
-        !trailers || trailers.legth === 0 
-        ? <h1>CARGANDO TRAILER</h1> : !trailerMovieOficial 
-        ? <h1>no existe TRAILER</h1> : <iframe src={`https://www.youtube.com/embed/${trailerMovieOficial.key}`}/>
+        !trailers || trailers.legth === 0 ? <h1>CARGANDO TRAILER</h1> : !trailerMovieOficial 
+        ? <h1>no existe TRAILER</h1> : <iframe src={`https://www.youtube.com/embed/${trailerMovieOficial.key}` }/>
       }
+      
     </div>
   </>
 }

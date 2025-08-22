@@ -21,11 +21,12 @@ export default function RouterMovies() {
     <NavBar/>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="new-movies" element={<NewMovies/>}/>
+        <Route path="/inicio" element={<Home/>}/>
+        <Route path="lanzamientos" element={<NewMovies/>}/>
         <Route path="popular" element={<Popular/>}/>
-        <Route path="search" element={<Search/>}/>
+        <Route path="buscar" element={<Search/>}/>
         <Route path="/movie/:id" element={<DetailMovies/>}/>
-        <Route path="favorites-movies" element={<FavoritesMovies/>}/>
+        <Route path="favoritos" element={<FavoritesMovies/>}/>
         <Route path="trailer/:id" element={<TrailerMovies/>}/>
         <Route path="*" element={<h2>ERROR 404 NOT FOUND</h2>} />
       </Routes>
