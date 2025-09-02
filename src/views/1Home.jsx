@@ -1,39 +1,29 @@
-import { Container, Box, Grid, Typography} from "@mui/material";
-import CarouselMovies from "../components/2CarouselMovies";
-import ListPopularMovies from "../components/3ListMovies";
-// import ListTopMovies from "../components/4ListTopMovies"
-import Swiper from "swiper";
-import useMovies from "../hooks/useMovies";
-import { useEffect } from "react";
-import { useParams } from "react-router";
-// useMovies
+import { Box, Grid, Typography } from "@mui/material";
+/* _______________________________________________________ */
+import SliderMoviesParallaxHero from "../components/2SliderMoviesParallaxHero.jsx";
+import SliderMoviesCoverFlow from "../components/3SliderMoviesCoverFlow.jsx";
+import Footer from "../components/7Footer";
+
 export default function Home() {
 
   return <>
-  
-  <Typography>HOME</Typography>
-  {/* <div  style={{backgroundColor: "#fdfc78", display: "flex", maxWidth: "100%", height:"750vh"}}>
-  </div>  */}
-    <CarouselMovies  />
-    <Grid sx={{}}>
-
-    <Container 
-    // sx={{backgroundColor: "black", display: "flex", justifyContent:"center"} }
-    >
-      <ListPopularMovies type="popular" />
-      <ListPopularMovies type="top_rated" />
-      
-
-    
-      {/* <ListTopMovies/> */}
-    </Container>
-    </Grid>
-  {/* <div style={{display:"flex", justifyContent: "space-around"}}>
-
-  </div> */}
+    <Box >
+      <SliderMoviesParallaxHero />
+      <Grid container mt={"19%"} spacing={8} gap={-15}>
+        <Grid p={1}>
+          <Typography color="typography.color" variant="h5">Populares</Typography>
+          <SliderMoviesCoverFlow type={"popular"} />
+        </Grid>
+        <Grid p={1}>
+          <Typography color="typography.color" variant="h5">Mas puntuadas</Typography>
+          <SliderMoviesCoverFlow type={"top_rated"} />
+        </Grid>
+      </Grid>
+    </Box>
+    <Footer/>
 
   </>
-  }
+}
 
 
 

@@ -17,7 +17,7 @@ export default function useMovies() {
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   
-    /* ************************** NEW MOVIES ************************************* */
+  /* ************************** NEW MOVIES ************************************* */
   async function getListMovies(type) {
     try {
       const {data } = await axios (`https://api.themoviedb.org/3/movie/${type}?language=es-ES&page=${page}`,{
@@ -36,58 +36,7 @@ export default function useMovies() {
     }
   }
 
-  // /* ************************** NEW MOVIES ************************************* */
-  // async function getNewMovies() {
-  //   try {
-  //     const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?language=es-ES&page=${page}/release_dates`,{
-  //       headers: {
-  //         Authorization: `Bearer ${AuthorizationTmdb}`
-  //       }
-  //     })
-  //     console.log("ULTIMOS LANZAMIENTOS", data.results)
-  //     setMovies(data.results)
-  //     console.log("total paginasss", data.total_pages)
-  //     setTotalPages(data.total_pages)
-  //     setPage(data.page)
-  //     console.log("MOSTRAE PAGINASSSSS", data.page)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  // /* ************************** POPULAR MOVIES ************************************* */
-  // async function getPopularMovies() {
-  //   try {
-  //     const {data } = await axios (`https://api.themoviedb.org/3/movie/popular?language=es-ES&page=${page}`,{
-  //       headers: {
-  //         Authorization: `Bearer ${AuthorizationTmdb}`
-  //       }
-  //     })
-  //     console.log("POPULAR-MAS", data.results)
-  //     setMovies(data.results)
-  //     setTotalPages(data.total_pages)
-  //     setPage(data.page)
-  //     console.log("MOSTRAE PAGINASSSSS", data.page) 
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
-  /* ************************** TOP MOVIES ************************************* */
-  // async function getTopMovies() {
-  //   try {
-  //     const {data} = await axios (`https://api.themoviedb.org/3/movie/top_rated?language=es-ES`,{
-  //       headers: {
-  //         Authorization: `Bearer ${AuthorizationTmdb}`
-  //       }
-  //     })
-  //     console.log("TOP-PUNTUADAS", data.results)
-  //     setMovies(data.results)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-
+ 
   /* ************************** SEARCH MOVIES ************************************* */ 
   async function getSearchMovies(title) {
     try {
