@@ -1,6 +1,6 @@
 import axios from "axios"
 /* °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
-import { useState } from "react"
+import { useEffect, useState } from "react"
 /* °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
 import { useParams } from "react-router";
 /* °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°° */
@@ -11,65 +11,41 @@ export default function useMovies() {
   
   const {id} = useParams();
 
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState([]);
   const [movieId, setMovieId] = useState({});
-  
-  const page = [1];
+  const [trailers, setTrailers] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
   
   /* ************************** NEW MOVIES ************************************* */
-  async function getNewMovies() {
+  async function getListMovies(type) {
     try {
-      const {data } = await axios (`https://api.themoviedb.org/3/movie/now_playing?language=es-ES`,{
+      const {data } = await axios (`https://api.themoviedb.org/3/movie/${type}?language=es-ES&page=${page}`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("ULTIMOS LANZAMIENTOS", data.results)
       setMovies(data.results)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-    
-  /* ************************** POPULAR MOVIES ************************************* */
-  async function getPopularMovies() {
-    try {
-      const {data } = await axios (`https://api.themoviedb.org/3/movie/popular?language=es-ES`,{
-        headers: {
-          Authorization: `Bearer ${AuthorizationTmdb}`
-        }
-      })
-      console.log("POPULAR-MAS", data.results)
-      setMovies(data.results)
+      // console.log("PELICULASSSS", data.results)
+      setTotalPages(data.total_pages)
+      // console.log("PAGINASSSS", data.total_pages)
+      setPage(data.page)
+      // console.log("MOSTRAR PAGINASSSSS", data.page)
     } catch (error) {
       console.log(error)
     }
   }
 
-  /* ************************** TOP MOVIES ************************************* */
-  async function getTopMovies() {
-    try {
-      const {data} = await axios (`https://api.themoviedb.org/3/movie/top_rated?language=es-ES`,{
-        headers: {
-          Authorization: `Bearer ${AuthorizationTmdb}`
-        }
-      })
-      console.log("TOP-PUNTUADAS", data.results)
-      setMovies(data.results)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
+ 
   /* ************************** SEARCH MOVIES ************************************* */ 
   async function getSearchMovies(title) {
     try {
-      const {data} = await axios (`https://api.themoviedb.org/3/search/movie?query=${title}&language=en-US&page=${page}`,{
+      const {data} = await axios (`https://api.themoviedb.org/3/search/movie?query=${title}&language=es-ES&page=${page}`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("SEARCH-BUSCAR", data.results)
+      // console.log("SEARCH-BUSCAR", data.results)
       setMovies(data.results)
     } catch (error) {
       console.log(error)
@@ -77,45 +53,66 @@ export default function useMovies() {
   }
 
  /* ************************** DETAIL MOVIE ************************************* */
-  async function getDetailMovieId() {
+  
+ async function getDetailMovieId() {
     try {
       const {data} = await axios (`https://api.themoviedb.org/3/movie/${id}?language=es-ES`,{
         headers: {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("DETALLE", data)
+      // console.log("DETALLE", data)
       setMovieId(data)
     } catch (error) {
       console.log(error)
     }
   }
 
- /* ************************** NEW MOVIES ************************************* */  
+  /* ************************** TRAILER MOVIE ************************************* */
+  async function getTrailersMovies() {
+    try {
+      const {data} = await axios (`https://api.themoviedb.org/3/movie/${id}/videos`,{
+        headers: {
+          Authorization: `Bearer ${AuthorizationTmdb}`
+        }
+      })
+      // console.log("TRAILER HOLAAA", data.results)
+      setTrailers(data.results)
+    } catch (error) {
+      console.log(error)
+    }
+  }  
+ /* ************************** FUNCTIONS ************************************* */  
   function searchTitleMovie (title) {
     getSearchMovies(title)
   }
 
-  function detailMovieId (id) {
-    setMovieId(id)
-  }
+  function changePage (page) {
+  setPage(page)
+}
 
  /* *************************************************************** */
   return {
   page,
   movies,
-
-  getNewMovies,
-  getPopularMovies,
-  getTopMovies,
+  getListMovies,
+  // getRecommendationsMovies,
+  // getNewMovies,
+  // getPopularMovies,
+  // getTopMovies,
 
   searchTitleMovie,
   getSearchMovies,
 
   getDetailMovieId,
   movieId,
-  detailMovieId
-
+  // detailMovieId,
+  
+  trailers,
+  getTrailersMovies,
+  changePage,
+  totalPages
+  
   } 
 }  
 
