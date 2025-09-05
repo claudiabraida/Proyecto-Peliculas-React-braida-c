@@ -55,10 +55,7 @@
 .sliderSkeletonFavorites.swiper{
   width: 100%;
   padding: 20px 0px 40px 0px;
-  
-  
 }
-
 
 @media (min-width:768px){
   .coverFlowMoviesHome.swiper{
