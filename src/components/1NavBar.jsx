@@ -46,30 +46,19 @@ export default function NavBarMovies() {
 
   return (
     <>
-     <AppBar  position="absolute" sx={{backgroundColor:"black", boxShadow: "0px -2px 30px #2335faff",}}>
+     <AppBar  position="absolute"
+      sx={{
+        backgroundColor:"black", 
+        boxShadow:{
+          xs:"0px -2px 30px #2335faff",
+          sm:"0px -1px 35px #2335faff"
+        }
+      }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
-          <Box onClick={()=> navigate("/")}sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} >
-            <IconButton variant="h6"
-              sx={{
-               mr: 2,
-               display: { xs: "none", md: "flex" },
-               fontSize:"2.1em",
-               fontFamily:"monospace",
-               fontWeight: 700,
-               color:"secondary.main",
-               textDecoration: "none",
-              }}>
-              <Avatar 
-              sx={{
-                width:{xs:"25%", sm:"30%", md:"40%"}, height:{xs:"40px",sm:"65px", md:"90px"},
-                borderRadius:"0px", padding:{xs:"4px", sm:"9px", md:"9px"
-              }}} alt="ícono de películas" src={image}/>
-              BRAIDA
-            </IconButton>
-          </Box>
-
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none"}}}>
+          {/* ------------------------ hamburger menu Nav  ------------------------ */}
+          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }}}>
+          {/* .....  menu icon none ..... */}
             <IconButton size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -79,7 +68,7 @@ export default function NavBarMovies() {
               >    
               <MenuIcon sx={{fontSize:{xs:"1em", sm:"2em"}}} />
             </IconButton>
-            
+          {/* ..... menu select none ..... */}
             <Menu 
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -96,52 +85,90 @@ export default function NavBarMovies() {
               onClose={handleCloseNavMenu}
               sx={{ display: { xs: "block", md: "none" }}}
               >
+                
               {categorias.map((page) => (
                 <MenuItem key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}>
-                  <Typography sx={{ textAlign: "center", color:"prymary.main"}}>{page}</Typography>
+                  <Typography sx={{ textAlign: "center", color:"prymary.main", fontSize:"1.2em"}}>{page}</Typography>
                 </MenuItem>          
               ))}
             </Menu>            
           </Box >
 
+          {/* ..... logo-avatar none ..... */}
           <Box onClick={()=> navigate("/")} sx={{ display: { xs: "flex", md: "none" }, mr: 2,}}>
             <IconButton variant="h6"
-            sx={{
-              mr:{xs:-3, sm:"1"} ,
-              display: { xs: "flex",md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              fontSize:{xs:"1.3em",sm:"2.5em"},
-              letterSpacing: ".3rem",
-              color: "secondary.main",
-              textDecoration: "none",
-            }}
+              sx={{
+                // backgroundColor:"red",
+                mr:{xs:-3, sm:"1"} ,
+                flexGrow: 1,
+                fontFamily: "monospace",
+                fontWeight: 700,
+                fontSize:{xs:"1.3em",sm:"2.5em"},
+                letterSpacing: ".3rem",
+                color: "secondary.main",
+                textDecoration: "none",
+              }}
             >
-            <Avatar 
-            sx={{
-              width:{xs:"25%", sm:"30%"}, height:{xs:"40px",sm:"65px"},
-              borderRadius:"0px", padding:{xs:"4px", sm:"9px", md:"9px"
-            }}} alt="ícono de películas" src={image}/>
+              {/* ..... avatar image icon none ..... */}
+              <Avatar alt="ícono de películas" src={image}
+                sx={{
+                  width:{xs:"25%", sm:"30%"},
+                  height:{xs:"40px",sm:"65px"},
+                  borderRadius:"0px", 
+                  padding:{xs:"4px", sm:"9px", md:"9px"}
+                }}
+              />
               BRAIDA
             </IconButton>
           </Box>
           
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" }, justifyContent:{md:"space-around"} }}>
-            {categorias.map((page) => (
-              <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
+            {/* ------------------------ Fixed Horizontal Nav ------------------------ */}
+
+           <Box onClick={()=> navigate("/")}sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} >
+           {/* ..... logo-avatar ..... */} 
+            <IconButton variant="h6"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontSize:"2.6em",
+                fontFamily:"monospace",
+                fontWeight: 700,
+                color:"secondary.main",
+                textDecoration: "none",
+              }}
+            >
+              <Avatar alt="ícono de películas" src={image}
                 sx={{
-                width:"19%",
-                p:"6px",
-                fontSize:{xs:"1em", sm:"2em", md:"0.9em"}, my: 2,
+                  width:{xs:"25%", sm:"30%", md:"40%"},
+                  height:{xs:"40px",sm:"65px", md:"90px"},
+                  borderRadius:"0px",
+                  padding:{xs:"4px", sm:"9px", md:"9px"
+                }}} 
+              />
+              BRAIDA
+            </IconButton>
+          {/* ............................................................ */}
+          </Box>
+            {/* ...... buttons Horizontal Nav ...... */}
+          <Box 
+            sx={{ 
+              flexGrow: 1, display: { xs: "none", md: "flex" },
+              justifyContent:{md:"center", gap:"2%"},
+              alignItems:"center"
+            }}
+          >
+            {categorias.map((page) => (
+            <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
+              sx={{
+                textAlign:"center",
+                fontSize:{ md:"1em"}, my: 2,
                 color: "prymary.main", display: "block",
-                // border: "px solid #4d2affff",
-                borderRadius:"20px",
-                }}
-              > 
-                {page}
-              </Button>
-            ))}
+                borderRadius:"20px",               
+                // border: "2px solid #ff752a65",
+              }}
+            > 
+              {page}
+            </Button>))}
           </Box>
         </Toolbar>
       </Container>

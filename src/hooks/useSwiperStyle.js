@@ -4,6 +4,7 @@ import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation'
+
 import { EffectCoverflow, Pagination, Navigation, Autoplay, Parallax } from 'swiper/modules';
 
 export default function useSwiperStyle (type, overrideOptions = {}) {
@@ -12,73 +13,56 @@ export default function useSwiperStyle (type, overrideOptions = {}) {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 1,
-
     loop: true,
-    // autoplay: {
-    //   delay: 2500,
-    //   disableOnInteraction: false,
-    //   pauseOnMouseEnter: true,
-      
-    // },
+
     pagination: {
       clickable: true,
     },
     navigation: true, 
   };
-  // effect: 'autoplay',
-  // return {
-  //   swiperConfig
-  // }
-
-
-        // speed={600}
-        // parallax={true}
-        // pagination={{
-        //   clickable: true,
-        // }}
-        // navigation={true}
-        // modules={[Parallax, Pagination, Navigation]}
-        // className="mySwiper"
 
   const swiperEffectsConfigurations = {
+// ..... SLIDER PARALLAX HOME .....
 
-    carousel: {
-       speed:900,
-       parallax:true,
+    parallax: {
+      speed:900,
+      parallax:true,
       spaceBetween: 0,
       // onSlidePrevTransitionStart={}
       centeredSlides: true,
-
-      // autoplay:{
-      //     delay: 2500,
-      //     disableOnInteraction: false,
-      //   },
+      autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true,
+      
+    },
         
       modules: [Parallax, Autoplay, Pagination, Navigation],
       className: "sliderParallaxHero"
 
-      },
+    },
 
+// ..... SLIDER COVER FLOW HOME .....
     coverflow: {
       speed:600,
       effect: 'coverflow',
       centeredSlides: true,
       coverflowEffect: {
-        rotate: 0,
-        stretch: 80,
-        // stretch: 120,
-        // depth: 200,
-        depth: 350,
-        modifier: 1,
-        slideShadows: true,
+      rotate: 0,
+      stretch: 80,
+      // stretch: 120,
+      // depth: 200,
+      depth: 350,
+      modifier: 1,
+      slideShadows: true,
       },
-          // slidesPerView: "1.5",
-          slidesPerView: "auto",
+      slidesPerView: "auto",
       modules: [EffectCoverflow, Pagination, Navigation, Autoplay],
-    className: "coverFlowMoviesHome"
+      className: "coverFlowMoviesHome",
+      className: "sliderSkeletonFavorites"
     
     },
-    };
+  };
      
   const breakpoints= {
    
@@ -94,14 +78,7 @@ export default function useSwiperStyle (type, overrideOptions = {}) {
           slidesPerView: 4,
           spaceBetween: 50,
         },
-      }
-    
-
-
-
-
-
-
+  };
 
   const swiperEffectConfig = swiperEffectsConfigurations[type] || {};
 
@@ -109,7 +86,7 @@ export default function useSwiperStyle (type, overrideOptions = {}) {
       ...swiperBaseConfigSliders, 
       ...swiperEffectConfig,
       ...overrideOptions,
-      breakpoints
-    }
+      // breakpoints
+    }; 
 
-    };
+};

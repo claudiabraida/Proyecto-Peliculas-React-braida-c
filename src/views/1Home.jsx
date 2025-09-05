@@ -1,27 +1,30 @@
 import { Box, Grid, Typography } from "@mui/material";
 /* _______________________________________________________ */
-import SliderMoviesParallaxHero from "../components/2SliderMoviesParallaxHero.jsx";
-import SliderMoviesCoverFlow from "../components/3SliderMoviesCoverFlow.jsx";
+import SliderParallaxHero from "../components/2SliderParallaxHero.jsx";
+import SliderCoverFlow from "../components/3SliderCoverFlow.jsx";
 import Footer from "../components/7Footer";
 
 export default function Home() {
 
   return <>
-    <Box >
-      <SliderMoviesParallaxHero />
-      <Grid container mt={"19%"} spacing={8} gap={-15}>
-        <Grid p={1}>
-          <Typography color="typography.color" variant="h5">Populares</Typography>
-          <SliderMoviesCoverFlow type={"popular"} />
+    <Box marginBottom={{xs:6, sm:9}} >
+      <SliderParallaxHero />
+      <Grid container mt={{xs:"19%"}} spacing={{xs:5, sm:9}} gap={-15} color="typography.color">
+        <Grid>
+          <Typography sx={{ml:{xs:"5%",sm:"3%"}, fontSize:{sm:"2.5em"}}}  variant="h5">
+            Populares
+          </Typography>
+          <SliderCoverFlow type={"popular"} />
         </Grid>
-        <Grid p={1}>
-          <Typography color="typography.color" variant="h5">Mas puntuadas</Typography>
-          <SliderMoviesCoverFlow type={"top_rated"} />
+        <Grid>
+          <Typography sx={{ml:{xs:"5%",sm:"3%"}, fontSize:{sm:"2.5em"}}} variant="h5">
+            Mas puntuadas
+          </Typography>
+          <SliderCoverFlow type={"top_rated"} />
         </Grid>
       </Grid>
     </Box>
-    <Footer/>
-
+    {/* <Footer/> */}
   </>
 }
 

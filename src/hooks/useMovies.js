@@ -26,11 +26,11 @@ export default function useMovies() {
         }
       })
       setMovies(data.results)
-      console.log("PELICULASSSS", data.results)
+      // console.log("PELICULASSSS", data.results)
       setTotalPages(data.total_pages)
-      console.log("PAGINASSSS", data.total_pages)
+      // console.log("PAGINASSSS", data.total_pages)
       setPage(data.page)
-      console.log("MOSTRAR PAGINASSSSS", data.page)
+      // console.log("MOSTRAR PAGINASSSSS", data.page)
     } catch (error) {
       console.log(error)
     }
@@ -45,7 +45,7 @@ export default function useMovies() {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("SEARCH-BUSCAR", data.results)
+      // console.log("SEARCH-BUSCAR", data.results)
       setMovies(data.results)
     } catch (error) {
       console.log(error)
@@ -61,7 +61,7 @@ export default function useMovies() {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("DETALLE", data)
+      // console.log("DETALLE", data)
       setMovieId(data)
     } catch (error) {
       console.log(error)
@@ -76,7 +76,7 @@ export default function useMovies() {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      console.log("TRAILER HOLAAA", data.results)
+      // console.log("TRAILER HOLAAA", data.results)
       setTrailers(data.results)
     } catch (error) {
       console.log(error)

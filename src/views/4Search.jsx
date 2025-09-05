@@ -4,7 +4,7 @@ import useMovies from "../hooks/useMovies"
 import { FavoriteContext } from "../context/FavoriteContext";
 /* ____________________________________________________ */
 
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 /* ____________________________________________________ */
 
@@ -15,43 +15,42 @@ import{ Box, Card, CardMedia, Grid, IconButton, Stack, TextField, Typography } f
 
 import dayjs from "dayjs";
 import image from "/public/image.png"
-import Footer from "../components/7Footer";
 
 /* ************************************************************ */
 export default function Search() {
   const { searchTitleMovie, movies } = useMovies();
   const { toogleFavorite, existsInFavorites } = useContext(FavoriteContext);
+  const [searchTitle, setSearchTitle] = useState("")
   const navigate = useNavigate();
   
-  function handleChange(event, value) {// function mui
-    changePage(value);
+  function valueTitleChange(e) {
+    const valueTitle= e.target.value
+    searchTitleMovie(valueTitle)
   }
   useEffect(()=>{
     // getSearchMovies()
   },[])
 
   return <>
-    <Box 
-       height={"100px"} p={3}>
-      <TextField 
-      id="outlined-basic" 
-      label="Outlined" 
-      variant="outlined"
-      border="2px solid red"
-      onInput={(e)=> searchTitleMovie(e.target.value)} type="text" />
-
-
-        
-      <Typography
-        pt={{xs:"10px",sm:"10px", md:"15px"}}
-        pb={{xs:"15px"}}
-        sx={{fontSize: { xs:"28px", sm: "55px", md:"40px" }}}>
-        
-      </Typography>
-      <Grid container spacing={3}>
-        { movies.length == 0 ? <Typography color="red"><img src={image} alt="" />BUSCA TUS PELÍCULAS</Typography>
-        : movies.map(({id, poster_path, title, original_title, release_date }) =>
-          
+    <Grid height={"420px"} marginTop={"25%"} color={"red"} container spacing={3}>
+      <Box
+        component="form"
+        sx={{ 
+          '& > :not(style)': { m: 4, width: '25ch' },
+          '& .MuiInputBase-input': {color:"typography.color"}
+        }}
+        noValidate
+        autoComplete="off">
+        <TextField 
+          label="Busca tus películas aquí (superman, matrix...)"
+          variant="standard"
+          color="secondary"      
+          focused
+          onChange={(e)=> searchTitleMovie(e.target.value)} type="text" 
+        />
+      </Box> 
+       { movies.length == 0 ? <Stack mt={{xs:"-20%", }} ml={{xs:"14%"}} > <img src={image} alt="icono de películas" /> </Stack>        
+       : movies.map(({id, poster_path, title, original_title, release_date }) =>          
         <Grid key={id}
           padding={{sm:"10px", md:"1px"}} 
           size={{ xs: 12, sm: 6 , md: 3, lg: 3, xl:2 }}>
@@ -78,12 +77,12 @@ export default function Search() {
               paddingLeft={"12px"} 
               sx={{fontSize: { xs:"1.6em", sm: "1.9em" },
                 display:"-webkit-box",
-                 WebkitBoxOrient: "vertical",
+                WebkitBoxOrient: "vertical",
                 textOverflow:"ellipsis",
                 overflow:"hidden",
                 WebkitLineClamp:{sm:"1" }
               }}>
-                {title}
+              {title}
             </Typography>
             <Stack
               flexDirection="row"
@@ -106,25 +105,7 @@ export default function Search() {
               </IconButton>      
             </Stack>
           </Card>
-        </Grid>)}
+        </Grid>)}        
       </Grid>
-      <Footer />
-    </Box>
-
   </>
 }
-    // <div style={{display: "flex", flexWrap: "wrap", justifyContent : "space-around"}}>
-    //   {
-    //     movies.length == 0 ? <h1 style={{color: "red"}}>busca tu película</h1> 
-    //     : movies.map(({id, poster_path, title, original_title, release_date}) => 
-    //     <div style={{display: "flex", flexWrap: "wrap", justifyContent : "space-around"}} key={id}>
-    //       <img src={`https://image.tmdb.org/t/p/w200/${poster_path}`} alt="" onClick={()=> navigate(`/movie/${id}`)} />
-    //       <p>{title}</p>
-    //       <p style={{width: "220px"}}>{release_date ? dayjs(release_date).format('YYYY') : 'No disponible'}</p>
-           
-    //       {/* <button onClick={()=> navigate(`/movie/${id}`)}>DETALLE</button> */}
-    //       <button style={{border:"none",backgroundColor:"transparent"}} onClick={()=> toogleFavorite({id, poster_path, title, original_title})}>
-    //       {existsInFavorites(id) ?  "💙" :  "🤍"}</button>
-    //     </div>)
-    //   }
-    // </div>

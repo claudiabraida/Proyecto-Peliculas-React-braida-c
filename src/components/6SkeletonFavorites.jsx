@@ -14,46 +14,41 @@ const ghostData = [
 ]
 
 export default function SkeletonFavorites() {
-  const swiperEffect = useSwiperStyle("coverflow", {pagination:false,navigation:false, autoplay: false});
+  const swiperEffect = useSwiperStyle("coverflow", {pagination:true,navigation:true, autoplay: false});
 
   return <>
-    <Typography variant="h5" sx={{position: 'absolute', top: '18%', left: '10%'}} >Mis Favoritos</Typography>
+  <Box height={"460px"} mt={"2%"}>
     <Swiper {...swiperEffect}>
       { ghostData.map(({id}) =>
-        <SwiperSlide style={{}} key={id}>
-          <Box sx={{backgroundColor:'transparent'}}>
-            <Card sx={{width:'90%',margin:'5% auto', backgroundColor: 'transparent'}}>
-              <CardMedia 
-                sx={{
-                backgroundColor: '#190848',
-                width: '80%', margin:'1% auto',
-                boxShadow: "0px 90px 16px -1px #8a74fcff",
-                border: '1px solid  #8a74fcff ',
-                borderRadius: '10px',
-                }} component="img" alt="tus favoritos"
-                image={image} 
-              />
-            </Card>
-            <Box
-              sx={{backgroundColor:'#000000ff',
-              width:'200%', height:'120px',
-              textAlign:'center',
-              marginLeft:'-50%'          
-              }}>   
-              <Typography
-                sx={{
-                 width:"70%", height:'90px',
-                 fontSize:'1.1em', color: '#ffffffff',
-                 backgroundColor:'#000000ff', boxShadow: '-10px -10px 5px #000000ff',
-                 padding:'4px', marginLeft:'13%'
-                  }}gutterBottom component="div">
-                    elije tus favoritos para verlos aquí
-              </Typography>     
-            </Box>
-          </Box>
+        <SwiperSlide className="sliderSkeletonFavorites" key={id}>
+          <Card 
+            sx={{
+              width: "100%",
+              objectFit: "cover",
+              border: "inherit",
+              }}>
+            <CardMedia component="img" alt="tus favoritos" image={image} />
+          </Card>   
+          <Typography className="title"
+            width={{xs:100, sm:"70%"}}
+            position={"absolute"}
+            left={20}
+            bottom={{xs:9, md:1}}
+            fontSize={{xs:15, sm:20, md:"1.5em"}} 
+            color={"typography.color"}
+            borderRadius={"0px 0px 10px 10px"}
+            sx={{
+              display:"-webkit-box",
+              WebkitBoxOrient: "vertical",
+              textOverflow:"ellipsis",
+              overflow:"hidden",
+              WebkitLineClamp:{xs:"2"},
+            }} gutterBottom component="div"> Aquí verás tus favoritos
+          </Typography>    
         </SwiperSlide>)
       }
     </Swiper>
+  </Box>
 
   </>
 }
