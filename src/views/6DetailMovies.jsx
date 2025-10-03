@@ -197,6 +197,7 @@ export default function DetailMovies() {
             ml: "90%"
           }} 
         />
+        
         {/* .... trailer component .... */}
         <TrailerMovie />
       </Box>
