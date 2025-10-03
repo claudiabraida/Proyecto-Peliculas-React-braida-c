@@ -168,6 +168,7 @@ export default function DetailMovies() {
           mt: {lg: "-50vh", xl: "-40vh"},
           ml:{lg: "31%",  xl: "40%"},
           pt:1
+          
           }}>
           {/* ................ sinopsis ................ */}
           <Typography gutterBottom component="div"
