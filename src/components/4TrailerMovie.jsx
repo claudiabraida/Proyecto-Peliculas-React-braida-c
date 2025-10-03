@@ -1,7 +1,9 @@
+import {CircularProgress} from "@mui/material";
+/* ______________________________________________ */
 import { useEffect } from "react";
+/* ______________________________________________ */
 import useMovies from "../hooks/useMovies";
-
-import { Box, CircularProgress, Grid, Typography } from "@mui/material";
+/* ______________________________________________ */
 
 export default function TrailerMovie() {
 
@@ -14,16 +16,11 @@ export default function TrailerMovie() {
   
   const trailerMovieOficial = trailers.find(trailer => trailer.type === "Trailer") 
 
-   return <>
-    <Grid container m={"auto"} textAlign={"center"} >
-      {
-        !trailers || trailers.legth === 0 ? <Typography>CARGANDO TRAILER</Typography> : !trailerMovieOficial 
-        ? <CircularProgress />: 
-        <Box marginLeft={{xs:"1%", sm:"-50%", md:"-100%"}}>
-        
-          <iframe className="trailer" src={`https://www.youtube.com/embed/${trailerMovieOficial.key}` }/>
-        </Box>
-      }
-    </Grid>
+  return <>   
+    {
+      !trailers || trailers.legth === 0 ? <CircularProgress /> : !trailerMovieOficial 
+      ? <CircularProgress />: 
+      <iframe className="trailer" src={`https://www.youtube.com/embed/${trailerMovieOficial.key}` }/>
+    }
   </>
 }

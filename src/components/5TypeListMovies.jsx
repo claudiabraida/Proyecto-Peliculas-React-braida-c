@@ -60,7 +60,7 @@ export default function TypeListMovies({type}) {
               color="whitesmoke"
               paddingLeft={"12px"} 
               sx={{
-                fontSize: { xs:"1.6em", sm: "1.9em",md:"1em" },
+                fontSize: { sm:"1.6rem", md: "1.9rem", lg:"1em" },
                 display:"-webkit-box",
                 WebkitBoxOrient: "vertical",
                 textOverflow:"ellipsis",
@@ -90,7 +90,7 @@ export default function TypeListMovies({type}) {
                 onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date})}
               >
                 {existsInFavorites(id) 
-                ? <Favorite sx={{fontSize: { xs:"1.5em", sm: "1.8em",md:"1em" }}}/> 
+                ? <Favorite sx={{fontSize: { sm:"1.5rem", md: "1.8rem", lg:"1rem" }}}/> 
                 : <FavoriteBorder sx={{fontSize:{ xs:"1.5em", sm:"1.8em", md:"1em"}}}/>}
               </IconButton>      
             </Stack>
@@ -99,6 +99,7 @@ export default function TypeListMovies({type}) {
         {/* ...... pagination ...... */}
         <Stack margin="auto" spacing={2}>
           <Pagination 
+          
             count={totalPages}
             page={page}
             onChange={handleChange}
@@ -106,7 +107,7 @@ export default function TypeListMovies({type}) {
             sx={{
               "& .MuiPaginationItem-root":
               {color: "#6d52f2ff", 
-                fontSize:{xs:"1.3em", sm:"2em", md:"1.5em"}
+                fontSize:{sm:"1.3rem", md:"2rem", lg:"1.5rem"}
               },
               "& .Mui-selected":{ 
               border: "1.5px solid #8886f0ff"

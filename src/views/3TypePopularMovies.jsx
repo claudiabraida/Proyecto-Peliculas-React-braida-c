@@ -12,7 +12,7 @@ export default function TypePopularMovies() {
           pt={{sm:"10px", md:"90px"}}
           pb={{xs:"1px"}}
           pl={{sm:"15px"}}
-          sx={{fontSize: { xs:"28px", sm: "55px", md:"40px" }}}>
+          sx={{fontSize: { sm:"28px", md: "55px", lg:"40px" }}}>
         </Typography>
         <TypeListMovies type={"popular"}/>
       </Grid>

@@ -1,0 +1,194 @@
+.swiper-pagination {
+  --swiper-pagination-bullet-width: 4px; 
+  --swiper-pagination-bullet-height: 4px; 
+  --swiper-pagination-color: #1222ff; 
+  --swiper-pagination-bullet-inactive-color: #e4daff;
+  --swiper-pagination-bullet-inactive-opacity: 0.9; 
+  --swiper-pagination-bullet-horizontal-gap: 4px; 
+}
+/* --------- sliderParallaxHero. --------- */
+.sliderParallaxHero.swiper{
+  height: 210px; 
+}
+
+.sliderParallaxHero .swiper-button-prev::after, 
+.sliderParallaxHero .swiper-button-next::after{
+  position: relative;
+  top: 60%;
+  font-size: 1.2rem;
+}
+
+/* --------- coverFlowMoviesHome --------- */
+.coverFlowMoviesHome .swiper-slide {
+  position: relative;
+  background-color: #060f28;
+  height: 380px; 
+  border-radius: 10px;
+  box-shadow: 0px 0px 26px -1px #8a74fcff;
+}
+
+ .coverFlowMoviesHome.swiper {
+  width: 100%;
+  padding: 20px 0px 40px 0px;
+}
+
+.swiper-button-prev::after, 
+.swiper-button-next::after{
+  width: 2px;
+  left: -30%;
+  position: relative;
+  top: -100%;
+  font-size: 1.6rem;
+  color: #fffff4;
+  
+}
+
+/* --------- sliderSkeletonFavorites --------- */
+.sliderSkeletonFavorites .swiper-slide {
+  position: relative;
+  background-color: #f92626;
+  width: 50%;
+  height: 340px;
+  border-radius: 14px;
+  box-shadow: 0px 0px 16px -1px #8a74fcff;
+  border: 1px solid  #8a74fcff ;
+}
+
+.sliderSkeletonFavorites.swiper {
+  width: 100%;
+  padding: 20px 0px 40px 0px;
+}
+
+.swiperFavorites {
+  position: relative;
+  background-color: #f92626;
+  width: 50%;
+  height: 340px;
+  border-radius: 4px;
+  box-shadow: 0px 0px 16px -1px #8a74fcff;
+  border: 1px solid  #8a74fcff ;
+
+}
+
+/* -------------- TABLET --------------  */
+@media (min-width: 768px) {
+ /* ------- sliderParallaxHero -------  */
+  .sliderParallaxHero.swiper{
+    height: 400px;
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after,
+  .sliderParallaxHero .swiper-button-next::after  {
+    width: 773%;
+    top: 150%;
+    font-size: 50px;
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after {
+    left: 35px;
+  }
+
+
+.swiper-pagination {
+  --swiper-pagination-bullet-width: 9px; 
+  --swiper-pagination-bullet-height: 9px; 
+  --swiper-pagination-bullet-inactive-opacity: 0.9; 
+  --swiper-pagination-bullet-horizontal-gap: 9px; 
+}
+
+ /* ------- coverFlowMoviesHome -------  */
+  .coverFlowMoviesHome .swiper-slide{
+    height: 650px; 
+    border-radius: 20px;
+  }
+
+  .coverFlowMoviesHome.swiper{
+    padding-bottom: 60px;
+  }
+
+  .swiperFavorites.swiper-slide{
+    padding: 20px;
+    background-color: #000000;
+    width: 30%;
+    height: 300px;  
+  }
+
+  .coverFlowMoviesHome .swiper-button-prev::after, 
+  .coverFlowMoviesHome .swiper-button-next::after{
+    width: 9%;
+    font-size: 40px;
+    margin-top: -210px;
+  }
+}
+
+/* -------------- DESKTOP --------------  */
+@media (min-width: 1024px) {
+  /* -------- sliderParallaxHero -------- */
+  .sliderParallaxHero.swiper{
+    height: 480px;
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after {
+    width: 773%;
+    top: 150%;
+    left: 35px;
+    font-size: 50px;
+  }
+
+  .sliderParallaxHero .swiper-button-next::after {
+    width: 773%;
+    top: 150%;
+    left: -35px;
+    font-size: 50px;
+  }
+
+  /* -------- coverFlowMoviesHome -------- */
+  .coverFlowMoviesHome.swiper{
+    width: 100%;
+  }
+
+ .coverFlowMoviesHome .swiper-slide{
+    width: 35%;
+    height: 790px;
+    bottom: 5px;
+  }
+
+  .coverFlowMoviesHome .swiper-button-prev::after {
+    width: 773%;
+    top: -90%;
+    left: 35px;
+    font-size: 90px;
+  }
+
+  .coverFlowMoviesHome .swiper-button-next::after{
+    width: 773%;
+    top: -90%;
+    left: -35px;
+    font-size: 90px;
+  };
+
+};
+
+/* -------------- LARGE DESKTOP --------------  */
+@media (min-width:1440px) {
+
+  .sliderParallaxHero.swiper{
+    background-color: #f92626;
+    height: 600px;
+  };
+
+  .sliderParallaxHero .swiper-slide{
+    /* background-color: #f92626; */
+    height: 690px;
+  };
+
+  .coverFlowMoviesHome .swiper-slide{
+    /* background-color: #ecd4d4; */
+    height: 890px;
+  };
+
+}
+
+
+
+

@@ -46,19 +46,20 @@ export default function NavBarMovies() {
 
   return (
     <>
-     <AppBar  position="absolute"
+     <AppBar position="absolute"
       sx={{
-        backgroundColor:"black", 
+        backgroundColor:"#000000ff", 
         boxShadow:{
-          xs:"0px -2px 30px #2335faff",
-          sm:"0px -1px 35px #2335faff"
+          sm: "0px -2px 30px #2335faff",
+          md: "0px -1px 35px #2335faff",
+          lg: "0px 3px 38px #2335faff",
         }
       }}>
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           {/* ------------------------ hamburger menu Nav  ------------------------ */}
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" }}}>
-          {/* .....  menu icon none ..... */}
+          <Box sx={{ flexGrow: 1, display: { sm: "flex", lg: "none" }}}>
+            {/* .....  menu icon none ..... */}
             <IconButton size="large"
               aria-label="account of current user"
               aria-controls="menu-appbar"
@@ -66,9 +67,9 @@ export default function NavBarMovies() {
               onClick={handleOpenNavMenu}
               sx={{color: "secondary.main"}}
               >    
-              <MenuIcon sx={{fontSize:{xs:"1em", sm:"2em"}}} />
+              <MenuIcon sx={{fontSize:{ sm: "1.9rem", md: "2.9rem"}}} />
             </IconButton>
-          {/* ..... menu select none ..... */}
+            {/* ..... menu select none ..... */}
             <Menu 
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -83,27 +84,29 @@ export default function NavBarMovies() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { xs: "block", md: "none" }}}
+              sx={{ display: { sm: "block", lg: "none" }}}
               >
                 
               {categorias.map((page) => (
                 <MenuItem key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}>
-                  <Typography sx={{ textAlign: "center", color:"prymary.main", fontSize:"1.2em"}}>{page}</Typography>
+                  <Typography sx={{ textAlign: "center", color:"prymary.main", fontSize: {sm: "1.2rem", md: "1.8rem"}}}>
+                    {page}
+                  </Typography>
                 </MenuItem>          
               ))}
             </Menu>            
           </Box >
 
           {/* ..... logo-avatar none ..... */}
-          <Box onClick={()=> navigate("/")} sx={{ display: { xs: "flex", md: "none" }, mr: 2,}}>
+          <Box onClick={()=> navigate("/")} sx={{ display: { sm: "flex", lg: "none" }, mr: {sm: 2, md: 4}}}>
             <IconButton variant="h6"
               sx={{
                 // backgroundColor:"red",
-                mr:{xs:-3, sm:"1"} ,
+                mr:{sm:-3, md:"1"} ,
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,
-                fontSize:{xs:"1.3em",sm:"2.5em"},
+                fontSize:{ sm: "1.3rem", md: "2.3rem"},
                 letterSpacing: ".3rem",
                 color: "secondary.main",
                 textDecoration: "none",
@@ -112,25 +115,24 @@ export default function NavBarMovies() {
               {/* ..... avatar image icon none ..... */}
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{xs:"25%", sm:"30%"},
-                  height:{xs:"40px",sm:"65px"},
+                  width:{sm: "25%",  md: "30%"},
+                  height:{sm: "40px", md: "65px"},
                   borderRadius:"0px", 
-                  padding:{xs:"4px", sm:"9px", md:"9px"}
+                  padding:{sm: "4px",  md: "9px", lg:"9px"}
                 }}
               />
               BRAIDA
             </IconButton>
           </Box>
-          
-            {/* ------------------------ Fixed Horizontal Nav ------------------------ */}
 
-           <Box onClick={()=> navigate("/")}sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} >
+          {/* ------------------------ Fixed Horizontal Nav ------------------------ */}
+          <Box onClick={()=> navigate("/")} sx={{ display: { sm: "none", lg: "flex" }, mr: 1 }} >
            {/* ..... logo-avatar ..... */} 
             <IconButton variant="h6"
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "flex" },
-                fontSize:"2.6em",
+                display: { sm: "none", lg: "flex" },
+                fontSize:"2.6rem",
                 fontFamily:"monospace",
                 fontWeight: 700,
                 color:"secondary.main",
@@ -139,21 +141,21 @@ export default function NavBarMovies() {
             >
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{xs:"25%", sm:"30%", md:"40%"},
-                  height:{xs:"40px",sm:"65px", md:"90px"},
+                  width:{ sm: "25%",  md: "30%", lg: "40%"},
+                  height:{ sm: "40px", md: "65px", lg: "90px"},
+                  padding:{ sm: "4px",  md: "9px", lg :"9px",
                   borderRadius:"0px",
-                  padding:{xs:"4px", sm:"9px", md:"9px"
                 }}} 
               />
               BRAIDA
             </IconButton>
-          {/* ............................................................ */}
+            {/* ............................................................ */}
           </Box>
-            {/* ...... buttons Horizontal Nav ...... */}
+          {/* ...... buttons Horizontal Nav ...... */}
           <Box 
             sx={{ 
-              flexGrow: 1, display: { xs: "none", md: "flex" },
-              justifyContent:{md:"center", gap:"2%"},
+              flexGrow: 1, display: { sm: "none", lg: "flex" },
+              justifyContent:{ lg:"center", gap:"5px"},
               alignItems:"center"
             }}
           >
@@ -161,10 +163,9 @@ export default function NavBarMovies() {
             <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
               sx={{
                 textAlign:"center",
-                fontSize:{ md:"1em"}, my: 2,
+                fontSize:{ lg:"1.2rem"}, my: 2,
                 color: "prymary.main", display: "block",
                 borderRadius:"20px",               
-                // border: "2px solid #ff752a65",
               }}
             > 
               {page}

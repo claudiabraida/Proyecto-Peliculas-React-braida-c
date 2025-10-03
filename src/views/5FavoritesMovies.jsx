@@ -12,14 +12,14 @@ import { Favorite } from "@mui/icons-material";
 
 import dayjs from "dayjs";
 import { Swiper, SwiperSlide } from "swiper/react";
-import useSwiperStyle from "../hooks/useSwiperStyle";
+import useSwiperSlidersConfig from "../hooks/useSwiperSlidersConfig";
 
 /* _______________________________________________________________ */
 
 export default function FavoritesMovies() {
   const {favorites, toogleFavorite, existsInFavorites} = useContext(FavoriteContext);
   const navigate = useNavigate();
-  const swiperEffect = useSwiperStyle("coverflow", {loop: false ,autoplay: false});
+  const swiperEffect = useSwiperSlidersConfig("coverflow", {loop: false ,autoplay: false});
   return <>
     <Box height={"460px"} mt={"23%"}>
       <Typography color={"typography.color"} ml={"10%"} variant="h6" >Mis Favoritos</Typography>

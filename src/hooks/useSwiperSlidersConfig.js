@@ -1,5 +1,4 @@
-//  Swiper React components
-// Swiper styles
+
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -7,22 +6,23 @@ import 'swiper/css/navigation'
 
 import { EffectCoverflow, Pagination, Navigation, Autoplay, Parallax } from 'swiper/modules';
 
-export default function useSwiperStyle (type, overrideOptions = {}) {
+export default function useSwiperSlidersConfig (type = {}) {
   
   const swiperBaseConfigSliders = {
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 1,
     loop: true,
-
+    
     pagination: {
       clickable: true,
     },
     navigation: true, 
+
   };
 
   const swiperEffectsConfigurations = {
-// ..... SLIDER PARALLAX HOME .....
+    // ..... SLIDER PARALLAX HOME .....
 
     parallax: {
       speed:900,
@@ -31,62 +31,58 @@ export default function useSwiperStyle (type, overrideOptions = {}) {
       // onSlidePrevTransitionStart={}
       centeredSlides: true,
       autoplay: {
-      delay: 4000,
-      disableOnInteraction: false,
-      pauseOnMouseEnter: true,
-      
-    },
+        delay: 4000,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: true,
+      },
         
       modules: [Parallax, Autoplay, Pagination, Navigation],
       className: "sliderParallaxHero"
 
     },
 
-// ..... SLIDER COVER FLOW HOME .....
+    // ..... SLIDER COVER FLOW HOME .....
     coverflow: {
       speed:600,
       effect: 'coverflow',
       centeredSlides: true,
       coverflowEffect: {
-      rotate: 0,
-      stretch: 80,
-      // stretch: 120,
-      // depth: 200,
-      depth: 350,
-      modifier: 1,
-      slideShadows: true,
+        rotate: 0,
+        stretch: 80,
+        // stretch: 120,
+        // depth: 200,
+        depth: 350,
+        modifier: 1,
+        // slideShadows: true,
       },
-      slidesPerView: "auto",
+      
+      slidesPerView: "1.9",
       modules: [EffectCoverflow, Pagination, Navigation, Autoplay],
       className: "coverFlowMoviesHome",
-      className: "sliderSkeletonFavorites"
-    
-    },
-  };
-     
-  const breakpoints= {
-   
+      
+      breakpoints:{
         "768": {
-          slidesPerView: 1,
-          spaceBetween: 20,
+          slidesPerView: 2.5,
+          // spaceBetween: 20,
         },
+
         "1024": {
-          slidesPerView: 3,
-          spaceBetween: 40,
+          slidesPerView: 2.6,
         },
+      
         "1440": {
-          slidesPerView: 4,
-          spaceBetween: 50,
+          slidesPerView: 3,
         },
+      }
+      // className: "sliderSkeletonFavorites"
+    },
+    
   };
 
   const swiperEffectConfig = swiperEffectsConfigurations[type] || {};
-
-    return { 
-      ...swiperBaseConfigSliders, 
-      ...swiperEffectConfig,
-      ...overrideOptions,
-      // breakpoints
-    }; 
+  return {
+    ...swiperBaseConfigSliders, 
+    ...swiperEffectConfig,
+  }; 
 
 };

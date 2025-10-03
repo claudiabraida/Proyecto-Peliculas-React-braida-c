@@ -32,6 +32,7 @@ export default function RouterMovies() {
         <Route path="*" element={<h2>ERROR 404 NOT FOUND</h2>} />
       </Routes>
     </BrowserRouter>
+        <Footer/>
         {/* <Route path="/:type" element={<NewMovies/>}/> */}
   </>
   

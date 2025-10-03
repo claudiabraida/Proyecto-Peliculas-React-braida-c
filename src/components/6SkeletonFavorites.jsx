@@ -2,8 +2,9 @@ import { Card, CardMedia, Box,  Typography } from "@mui/material";
 /* __________________________ SWIPER __________________________ */
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import useSwiperStyle from "../hooks/useSwiperStyle";
+// import useSwiperStyle from "../hooks/useSwiperStyle";
 import image from "/public/image.png"
+import useSwiperSlidersConfig from "../hooks/useSwiperSlidersConfig";
 const ghostData = [
   {id: crypto.randomUUID()},
   {id: crypto.randomUUID()},
@@ -14,7 +15,7 @@ const ghostData = [
 ]
 
 export default function SkeletonFavorites() {
-  const swiperEffect = useSwiperStyle("coverflow", {pagination:true,navigation:true, autoplay: false});
+  const swiperEffect = useSwiperSlidersConfig("coverflow", {pagination:true,navigation:true, autoplay: false});
 
   return <>
   <Box height={"460px"} mt={"2%"}>

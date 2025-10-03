@@ -16,7 +16,7 @@ export default function useMovies() {
   const [trailers, setTrailers] = useState([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  
+
   /* ************************** NEW MOVIES ************************************* */
   async function getListMovies(type) {
     try {
@@ -35,7 +35,6 @@ export default function useMovies() {
       console.log(error)
     }
   }
-
  
   /* ************************** SEARCH MOVIES ************************************* */ 
   async function getSearchMovies(title) {
@@ -76,7 +75,7 @@ export default function useMovies() {
           Authorization: `Bearer ${AuthorizationTmdb}`
         }
       })
-      // console.log("TRAILER HOLAAA", data.results)
+      console.log("TRAILER HOLAAA", data.results)
       setTrailers(data.results)
     } catch (error) {
       console.log(error)
@@ -93,25 +92,21 @@ export default function useMovies() {
 
  /* *************************************************************** */
   return {
+
   page,
+  totalPages,
+
   movies,
   getListMovies,
-  // getRecommendationsMovies,
-  // getNewMovies,
-  // getPopularMovies,
-  // getTopMovies,
-
   searchTitleMovie,
   getSearchMovies,
 
   getDetailMovieId,
   movieId,
-  // detailMovieId,
   
   trailers,
   getTrailersMovies,
   changePage,
-  totalPages
   
   } 
 }  

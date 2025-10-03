@@ -6,16 +6,15 @@ import useMovies from '../hooks/useMovies';
 /* __________________________ MUI __________________________ */
 import { Box, Button, CircularProgress, Stack, Typography } from '@mui/material';
 /* __________________________ SWIPER __________________________ */
-import useSwiperStyle from "../hooks/useSwiperStyle";
+import useSwiperSlidersConfig from "../hooks/useSwiperSlidersConfig";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import dayjs from 'dayjs';
-import { red } from '@mui/material/colors';
 
 export default function SliderParallaxHero(now_playing) {
   // console.log("HAY ALGUIEN AHÍ????")
   const { getListMovies, movies } = useMovies();
   const navigate = useNavigate();
-  const swiperEffect = useSwiperStyle("parallax");
+  const swiperEffect = useSwiperSlidersConfig("parallax");
 
   useEffect(()=>{
     if(now_playing) {
@@ -27,32 +26,32 @@ export default function SliderParallaxHero(now_playing) {
   return <>           
     { movies.length == 0 ?  <CircularProgress/> : 
     <Swiper parallax {...swiperEffect}> 
-     { movies.map(({id, poster_path, title, backdrop_path, original_title, release_date, overview, type }) => 
+     { movies.map(({id, title, backdrop_path, release_date }) => 
      <SwiperSlide  key={id}>
-      <Box className="sliderParallaxHero" mt={{xs:7, sm:10, md:14}} height={{xs:200, sm:400}}
+      <Box className="sliderParallaxHero" mt={{ sm: 7, md: 10, lg: 13}} height={{sm: 180, md: 400, lg: 380}}
         sx={{
           backgroundImage:`url(https://image.tmdb.org/t/p/original/${backdrop_path})`,
-          width:"100%",
+          width: "100%",
+          height:{ sm: "150px", md: "320px", lg: "380px", xl: "600px"},
           backgroundRepeat:"no-repeat",
           backgroundSize:"cover",
-          backgroundPositionY:{xs:"center", md:"20%" }
+          backgroundPositionY:{ sm: "-5%", md: "-2%", lg: "-1%" , xl: "10%"}
         }}
         >
 
         <Stack 
           color={"white"} 
-          pl={{xs:2, sm: 4, md:5}}
-          mt={{xs:1, md:1}}
+          pl={{ sm:2, tablet: 4, lg: 5}}
+          mt={{ sm: 1, lg: 3}}
           pb={2}
-          sx={{
-          position:"absolute",  // display:"-webkit-box",// WebkitBoxOrient: "vertical",// textOverflow:"ellipsis",// overflow:"hidden",// WebkitLineClamp:{xs:"" }     
-          }}
+          sx={{ position:"absolute"}}
+            // display:"-webkit-box",// WebkitBoxOrient: "vertical",// textOverflow:"ellipsis",// overflow:"hidden",// WebkitLineClamp:{xs:"" }     
         >
           {/* ..... title ..... */}
           <Typography 
             className="titleMovie" 
-            data-swiper-parallax="-500" 
-            fontSize={{xs:"1.1em", sm:"2.1em", md:"2.4em"}} 
+            data-swiper-parallax= "-500" 
+            fontSize={{ sm: "1rem", md: "1.8rem", lg: "2.rem"}} 
             sx={{textShadow:" 1px 3px 2px #000000ff"}} >
            {title}
           </Typography>
@@ -61,19 +60,19 @@ export default function SliderParallaxHero(now_playing) {
           <Typography 
             className="dateMovie" 
             data-swiper-parallax="-200"
-            fontSize={{xs:"1em", sm:"2em" }} 
+            fontSize={{ sm: "0.8rem", md: "1.5rem" }} 
             sx={{textShadow:" 1px 3px 2px  #000000ff"}} >
             {release_date ? dayjs(release_date).format('YYYY') : 'Sin fecha'}
           </Typography>
         </Stack>
         <Button variant="outlined" 
           sx={{
-            width:{xs:"26%", sm: "22%", md:"15%"},
-            height:{xs:"20px", sm: "40px"},
-            fontSize:{xs:"0.5em", sm: "1.5em", md:"1.3em"},
+            width:{ sm: "22%", md: "20%", lg: "15%"},
+            height:{ sm:"20px", md: "40px"},
+            fontSize:{ sm: "0.40rem", md: "1rem", lg: "1rem"},
            
-            mt:{xs: "42%", sm: "40%", md:"30%"},
-            ml:{xs: "70%", sm: "70%", md:"80%"},
+            mt:{ sm: "32%", md: "31%", lg: "28%", xl: "-20%"},
+            ml:{ sm: "73%", md: "74%", lg: "80%"},
             borderRadius:5,
             backgroundColor:"#06153de7",color:"#d8f0fbff",
             "& :hover":{ backgroundColor: "secondary.main",},
