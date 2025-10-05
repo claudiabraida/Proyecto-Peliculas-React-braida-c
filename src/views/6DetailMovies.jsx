@@ -1,14 +1,17 @@
+/* ____________________ MUI  ____________________ */
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
-import { Favorite, FavoriteBorder, Margin, Padding} from '@mui/icons-material';
+import { Favorite, FavoriteBorder } from '@mui/icons-material';
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import {Card, CardMedia, CardContent, Grid, Stack, Typography } from '@mui/material';
+import { Card, CardMedia, CardContent, Stack, Typography } from '@mui/material';
 import Button from '@mui/material/Button';
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
-/* ______________________________________________ */
+/* ____________________  CUSTOM HOOKS  ____________________ */
 import useMovies from "../hooks/useMovies";
-
+/* ____________________  CONTEXT  ____________________ */
 import { FavoriteContext } from "../context/FavoriteContext";
+/* ____________________  COMPONENTS  ____________________ */
+import TrailerMovie from '../components/4TrailerMovie';
 /* ______________________________________________ */
 
 import { useContext, useEffect, useState } from "react";
@@ -17,9 +20,6 @@ import { useNavigate, useParams } from "react-router";
 /* ______________________________________________ */
 
 import dayjs from "dayjs";
-/* ______________________________________________ */
-
-import TrailerMovie from '../components/4TrailerMovie';
 /* ____________________ MUI element ____________________ */
 
 const style = {
@@ -35,7 +35,6 @@ const style = {
   top:'50%',
   left:'50%',
   transform:'translate(-50%, -50%)',
-  
 };
 
 export default function DetailMovies() {
@@ -64,143 +63,324 @@ export default function DetailMovies() {
   {/* ............ card container ............*/}
   return <>
     <Card
-      sx={{        
+      sx={{
         backgroundImage:`url(https://image.tmdb.org/t/p/original/${movieId.backdrop_path})`,
         width: "100%" ,
-        backgroundRepeat:"no-repeat",
-        backgroundSize:"cover",
+        backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
         backgroundPosition: "center",
-        boxShadow:"none",       
+        boxShadow: "none",
       }}
     >
       {/* .............. Box content filter .............. */}
-      <Box   bgcolor={"#000000b1"} minHeight={{sm:"90vh"}} >
-        {/* .............. title & date .............. */}
-        <Typography  
-          // position={{lg:"absolute"}}
-          sx={{
-            textShadow:" 1px 3px 2px #000000ff"}}
-          color="typography.color"
-          fontSize={{sm: "0.9rem", md: "2rem", lg: "1.6rem", xl: "2.7rem"}}
-          fontWeight={"600"}
-          pt={{sm: 10, md: 12, lg: 15}} ml={{sm: 3, md: 3, lg: 50}} pb={{sm:1.5, md: 2}} 
-        >
-          {movieId.title} <Box component={"span"} fontWeight={200} fontSize={{ sm: "0.7rem", md: "1.5rem", lg: "1.2rem", xl: "2rem"}}>
-          ({movieId.release_date ? 
-          dayjs(movieId.release_date).format('YYYY') : 'No disponible'}) </Box>
-        </Typography>
-
+      <Box  bgcolor={ "#000000b1" } minHeight={{ sm:"90vh" }} >
         {/* .............. card elements .............. */}
-        <Stack direction={{ sm:"row",   }} ml={{lg: 4}} mt={{lg: -9}} justifyContent={{sm: "center"}} alignItems={{sm:"start", lg: "end"}} spacing={{sm:2, md: 10, lg: 5}}>
-          <CardMedia  component="img"
-            image={`https://image.tmdb.org/t/p/original/${movieId.poster_path}`} alt={movieId.title}
-            sx={{
-              // position: "relative",
-              width:{ sm: "45%", md:"35%", lg:"25%"},
-              borderRadius:{ sm: "10px", xl: "20px"},
-              border:"1px solid #8a74fcff",
-            
+        <Stack
+          direction={{ sm: "column" }}
+          ml={{ lg: 7 }}
+          mr={{ lg: 7 }}
+          spacing={{
+            sm:2,
+            md: 3,
+            lg: 1,
+          }}
+        >
+          {/* .............. title & date .............. */}
+          <Typography 
+            width={{ md: "80%", lg: "70%" }}
+            color="typography.color"
+            fontWeight={"600"}
+            fontSize={{
+              sm: "0.9rem",
+              md: "2rem",
+              lg: "2.1rem",
+              xl: "2.5rem"
             }}
-          />
+            pt={{
+              sm: 10,
+              md: 14,
+              lg: 15,
+              xl: 18,
+            }}
+            pl={{
+              sm: "30px",
+              md: "90px",
+              lg: "0px",
+            }}
+            left={"20px"}
+          > {movieId.title} <Box 
+            component={ "span" } 
+            fontWeight={ 200 } 
+            fontSize={{ 
+              sm: "0.7rem", 
+              md: "1.5rem", 
+              lg: "1.3rem", 
+              xl: "2rem"
+            }}
+            > 
+             ({ movieId.release_date ? dayjs(movieId.release_date).format('YYYY') : 'No disponible '})
+            </Box>
+          </Typography>
 
-          {/* ................. card subgroup elements  ................. */}
-          <Stack 
-            width={{lg:"100%"}}
-            flexDirection={{lg:"row"}}
-            alignItems={{lg: "center"}}
-            justifyContent={{sm: "center"}}
-            spacing={{sm: 1,}}>
-            {/* ........ genres ........ */}
-            {
-              movieId.genres && movieId.genres.map(({name}) =>
-              <Typography key={name} flexDirection={"row"} fontSize={{sm: "0.60rem", md: "1.6rem", lg: "1.4rem"}} color={ "prymary.main"}>
-                {name}
-              </Typography>)
-            }
+          {/* ................. Card Subgroup Elements  ................. */}
+          <Stack
+            // bgcolor={"yellowgreen"}
+            direction={{sm:"row" }}
+            justifyContent={{sm:"center", lg: "flex-start"}}
+            alignItems={{ md: "center" , lg: "start"}}
+            spacing={{ sm: 2, md: 10, lg: 0}}
+            pt={{lg: 2}}
+          >
+            {/* ........ CardMedia Image ........ */}
+            <CardMedia  component="img"
+              image={`https://image.tmdb.org/t/p/original/${movieId.poster_path}`} alt={movieId.title}
+              sx={{
+                width:{
+                  sm: "45%",
+                  md:"35%",
+                  lg:"28%"
+                },
+                borderRadius:{
+                  sm: "10px",
+                  xl: "20px"
+                },
+                border:"1px solid #8a74fcff",
+              }}
+            />
+            {/* .............. Group: genres, buttons favorite, trailer  .............. */}
+            <Stack
+              width={{lg: "50%"}}
+              flexWrap={{lg:"wrap"}}
+              flexDirection={{ lg: "row" }}
+              alignItems={{ lg: "center"}}
+              gap={{lg: 1.6} }
+              spacing={{ sm: 1, lg: 0,  }}
+              pl={{ lg:5 , xl: 8}}
+            >
+              {/* ........ genres ........ */}
+              {
+                movieId.genres && movieId.genres.map(({name}) =>
+                <Typography key={name}
+                  color={ "prymary.main" }
+                  fontSize={{
+                    sm: "0.7rem",
+                    md: "1.6rem",
+                    lg: "1.4rem",
+                    xl: "2rem",
+                  }}
+                >
+                  {name}
+                </Typography>)
+              }
 
-            {/* ........ buttons favorite / trailer ........ */}
-            <Stack direction={"row"} spacing={{sm: 0.5, md: 3}} alignItems={"center"} >
-              {/* ........ buttons favorite  ........ */}
-              <Button onClick={()=>
-                toogleFavorite({
-                  id: movieId.id ,
-                  poster_path: movieId.poster_path,
-                  title: movieId.title,
-                  original_title: movieId.original_title,
-                  release_date:movieId.release_date
-                })}
-                sx={{
-                  width: { sm: "25px", md: "55px", lg: "50px" },
-                  height: { sm: "25px", md: "55px", lg: "50px" },              
-                  minWidth: "auto",
-                  backgroundColor: "#082052ff",
-                  borderRadius: "50%",
+              {/* ........ buttons favorite / trailer ........ */}
+              <Stack
+                direction={ "row" }
+                alignItems={ "center" }
+                spacing={{
+                  sm: 0.5,
+                  md: 3,
+                  lg: 2,
+                  xl: 3,
                 }}
               >
-                { existsInFavorites (id) ?
-                  <Favorite sx={{ fontSize: {sm: "1rem", md:"2.5rem", lg:"2.2rem"} ,  m: "auto",}} /> :
-                  <FavoriteBorder sx={{ fontSize:{ sm: "1rem", md: "2.5rem", lg: "2.2rem"}, m: "auto", }} />
-                }
-              </Button>
-              {/* ........ buttons trailer  ........ */}
-              <Button variant="outlined" onClick={handleOpen}
-                sx={{
-                  width:{ sm: "75px", md: "150px"},
-                  height:{ sm: "18px", md:"50px", lg: "30px"},
-                  backgroundColor: " #03112eff",
-                  color: "#90aaf8ff",
-                  borderRadius:{sm: "50px"},
-                  p:{sm: "1px", lg: "6px"},
-                }}
-              >
-                <PlayCircleOutlineIcon sx={{ fontSize:{sm: "1.2rem", md: "3rem", lg: "2.9rem" }, ml:{ sm: "-5px", md: "-9px" ,lg: "-20px"}}} />
-                <Typography textTransform={"capitalize"} fontSize={{sm: "0.6rem", md: "1.2rem", lg: "1rem" }} ml={{sm: "2px" , ml:"5px" }} >
-                  ver tráiler
-                </Typography>
-              </Button>
+                {/* ........ buttons favorite  ........ */}
+                <Button onClick={()=>
+                  toogleFavorite({
+                    id: movieId.id ,
+                    poster_path: movieId.poster_path,
+                    title: movieId.title,
+                    original_title: movieId.original_title,
+                    release_date:movieId.release_date
+                  })}
+                  sx={{
+                    width: {
+                      sm: "25px",
+                      md: "55px",
+                      lg: "50px",
+                      xl: "58px",
+                    },
+                    height: {
+                      sm: "25px",
+                      md: "55px",
+                      lg: "50px",
+                      xl: "58px",
+                    },
+                    minWidth: "auto",
+                    backgroundColor: "#082052ff",
+                    borderRadius: "50%",
+                  }}
+                >
+                  { existsInFavorites (id) ?
+                    <Favorite
+                      sx={{
+                        fontSize:{
+                          sm: "1rem",
+                          md:"2.5rem",
+                          lg:"2.2rem",
+                          xl:"2.5rem",
+                        } ,
+                        m: "auto",
+                      }}
+                    /> :
+                    <FavoriteBorder
+                      sx={{
+                        fontSize:{
+                          sm: "1rem",
+                          md: "2.5rem",
+                          lg:"2.2rem",
+                          xl: "2.5rem",
+                        },
+                        m: "auto",
+                      }}
+                    />
+                  }
+                </Button>
+
+                {/* ........ buttons trailer  ........ */}
+                <Button variant="outlined" onClick={handleOpen}
+                  sx={{
+                    backgroundColor: " #03112eff",
+                    color: "#90aaf8ff",
+                    width:{
+                      sm: "75px",
+                      md: "150px",
+                      xl: "180px",
+                    },
+                    height:{
+                      sm: "18px",
+                      md:"50px",
+                      lg: "30px",
+                      xl: "40px",
+                    },
+                    borderRadius:{
+                      sm: "50px"
+                    },
+                    p:{
+                      sm: "1px",
+                      lg: "6px",
+                      xl: "18px",
+                    },
+                  }}
+                >
+                  <PlayCircleOutlineIcon
+                    sx={{
+                      fontSize:{
+                        sm: "1.2rem",
+                        md: "3rem",
+                        lg: "2.9rem",
+                        xl: "3rem",
+                      },
+                      ml:{
+                        sm: "-5px",
+                        md: "-9px",
+                        lg: "-20px",
+                      }
+                    }}
+                  />
+                  <Typography
+                    textTransform={"capitalize"}
+                    fontSize={{
+                      sm: "0.6rem",
+                      md: "1.2rem",
+                      lg: "1rem",
+                      xl: "1.3rem",
+                    }}
+                    ml={{
+                      sm: "2px",
+                      lg: "5px",
+                      xl:"8px",
+                    }}
+                  >
+                    ver tráiler
+                  </Typography>
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
-        </Stack >
-        {/* ................ content sinopsis / overview ................ */}
-        <CardContent  sx={{ 
-          width: {sm: "85%" , md: "80%", lg: "67%", xl: "60%"}, 
-          color: "typography.color", margin: "auto", 
-          mt: {lg: "-50vh", xl: "-40vh"},
-          ml:{lg: "31%",  xl: "40%"},
-          pt:1
-          
-          }}>
-          {/* ................ sinopsis ................ */}
-          <Typography gutterBottom component="div"
-            fontWeight={{ sm: 700}} sx={{ fontSize: {sm: "0.9rem", md: "1.7rem", lg: "1.3rem"}, pt: { md: 3}}}>
-            Sinopsis
-          </Typography>
-          {/* ................ overview ................ */}
-          <Typography  
-           
-            lineHeight={{ sm: 2, md: 2.4, lg: 2}} 
-            sx={{fontSize: {sm: "0.7rem", md: "1.5rem", lg: "1.1rem"}, 
-           
-            }}>
-            {movieId.overview}
-          </Typography>
-        </CardContent>
+          </Stack >
+
+          {/* ................ content sinopsis / overview ................ */}
+          <CardContent
+            sx={{
+              position: { lg:"relative" },
+              color: "typography.color",
+              width:{
+                sm: "100%",
+                lg: "68%",
+                xl: "66%"
+              },
+              pl:{
+                sm: "30px",
+                md: "90px",
+                lg: "0px"
+              },
+              pr:{
+                sm: "30px",
+                md: "90px",
+                lg: "0px"
+              },
+              left: {lg:"33%"},
+            }}
+          >
+            {/* ................ sinopsis ................ */}
+            <Typography gutterBottom component="div"
+              fontWeight={{ sm: 700}}
+              sx={{
+                fontSize:{
+                  sm: "0.9rem",
+                  md: "1.7rem",
+                  lg: "1.5rem",
+                  xl: "1.8rem",
+                },
+                mt:{
+                  sm: "-20px",
+                  lg: "-48%",
+                  xl: "-50%",
+                },
+              }}
+            >
+              Sinopsis
+            </Typography>
+            {/* ................ overview ................ */}
+            <Typography
+              lineHeight={{
+                sm: 2,
+                md: 1.6,
+                lg: 2
+              }}
+              sx={{
+                fontSize:{
+                  sm: "0.7rem",
+                  md: "1.5rem",
+                  lg: "1.3rem",
+                  xl: "1.5rem",
+                },
+              }}
+            >
+              {movieId.overview}
+            </Typography>
+          </CardContent>
+        </Stack>
       </Box>
     </Card>
     {/* ............... modal trailer  ............... */}
     <Modal  open={open}>
       <Box  sx={{...style}}>
-        <HighlightOffIcon onClick={handleClose} 
-          sx={{ 
-            fontSize:{ sm:"1.5rem", md:"3rem", lg:"2.6rem"}, 
+        <HighlightOffIcon onClick={handleClose}
+          sx={{
             color:"prymary.main" ,
+            fontSize:{
+              sm:"1.5rem",
+              md:"3rem",
+              lg:"2.6rem"
+            },
             ml: "90%"
-          }} 
+          }}
         />
-        
+
         {/* .... trailer component .... */}
         <TrailerMovie />
       </Box>
     </Modal>
-  </>  
+  </>
 };
