@@ -39,7 +39,8 @@ export default function SliderMoviesCoverFlow({type}) {
             userSelect: "none",
             border: "inherit",
             height:{
-              sm: "255px",
+              xs: "255px",
+              sm: "295px",
               md: "460px",
               lg: "600px",
               xl: "720px",
@@ -59,17 +60,48 @@ export default function SliderMoviesCoverFlow({type}) {
           />
         </Card>
 
-        <Stack direction={"row"} justifyContent={"center"} gap={{sm: 8 , md: 16, lg: 20}} position={"relative"} top={{sm:-8, md: -10, lg: -25}} >
+        <Stack 
+          position={"relative"} 
+          direction={"row"} 
+          justifyContent={"center"} 
+          gap={{
+            xs: 8 , 
+            sm: 9 , 
+            md: 16, 
+            lg: 20
+          }} 
+          top={{
+            xs:-8, 
+            sm:-9, 
+            md: -10, 
+            lg: -25
+          }}
+        >
           {/* ---------- vote_average ---------- */}          
           <Box sx={{ position: "relative", display: "inline-flex" }}>
             <CircularProgress 
               variant="determinate" 
               thickness={2.2}
-              size={{sm:"2.5rem", md:"4.5rem", lg: "5rem"}} 
+              size={{
+                xs:"2.5rem", 
+                sm:"2.6rem", 
+                md:"4.5rem", 
+                lg: "5rem"
+              }} 
               value={Math.round((vote_average / 10 ) * 100)} 
               sx={{
-                width:{sm:"2.5rem", md: "4.5rem", lg: "5rem"},
-                height:{sm:"2.5rem", md:"4.5rem", lg: "5rem"},
+                width:{
+                  xs:"2.5rem", 
+                  sm:"2.6rem", 
+                  md: "4.5rem", 
+                  lg: "5rem"
+                },
+                height:{
+                  xs:"2.5rem", 
+                  sm:"2.6rem", 
+                  md:"4.5rem", 
+                  lg: "5rem"
+                },
                 boxShadow:"inset 0px 0px  0px 2px #86fff5e9",
                 backgroundColor:"#000000ff",
                 borderRadius:"50%", color:"secondary.main",
@@ -77,11 +109,27 @@ export default function SliderMoviesCoverFlow({type}) {
             />          
             <Box
               sx={{
-                top:{sm:-3, md:5}, left: 0, bottom: 0, right: 0, position: 'absolute', 
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
+                position: 'absolute', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                top:{
+                  xs:-4, 
+                  sm:-3, 
+                  md:4
+                },
+                left: 0, 
+                bottom: 0, 
+                right: 0, 
               }}
             >
-              <Typography variant="caption" component="div" fontSize={{sm:"0.8rem", md: "1.4rem", lg: "1.6rem"}} color="prymary.main" >
+              <Typography variant="caption" component="div" 
+                fontSize={{
+                  xs:"0.8rem", 
+                  sm:"0.9rem", 
+                  md: "1.4rem", 
+                  lg: "1.6rem"
+                }} color="prymary.main" >
                 {`${Math.round((vote_average  / 10 ) * 100)}%`}
               </Typography>
             </Box>
@@ -89,23 +137,57 @@ export default function SliderMoviesCoverFlow({type}) {
           {/* ---------- favorite ---------- */}          
           <Box display={"flex"} alignItems={"center"} justifyContent={"space-around"}>
             <IconButton
-              onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date })}
+              onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date, vote_average })}
             >
               {
                 existsInFavorites(id) ? 
-                <Favorite sx={{color: "#4e48cbff", fontSize: { sm: "1.8rem", md: "3.3rem", lg: "3.7rem"}}} /> : 
-                <FavoriteBorder sx={{ color: "#4e48cbff", fontSize: { sm: "1.8rem", md: "3.3rem", lg: "3.7rem"}}} />
+                <Favorite 
+                  sx={{
+                    color: "#4e48cbff", 
+                    fontSize: { 
+                      xs: "1.8rem", 
+                      sm: "1.98rem", 
+                      md: "3.3rem", 
+                      lg: "3.7rem"
+                    }
+                  }} 
+                /> : 
+                <FavoriteBorder 
+                  sx={{ 
+                    color: "#4e48cbff", 
+                    fontSize: { 
+                      xs: "1.8rem", 
+                      sm: "1.98rem", 
+                      md: "3.3rem", 
+                      lg: "3.7rem"
+                    }
+                  }} 
+                />
               }
             </IconButton> 
           </Box>
         </Stack>
         {/* ---------- title ---------- */}
         <Typography className="title"
-            width={{ sm: "80%", md: "70%",  lg: "92%"}}
-            fontSize={{ sm: "1rem", md: "1.6rem", lg: "1.9rem"}} 
+            width={{ 
+              xs: "80%", 
+              sm: "90%", 
+              md: "70%",
+              lg: "92%"
+            }}
+            fontSize={{ 
+              xs: "1rem", 
+              sm: "1.1rem", 
+              md: "1.6rem", 
+              lg: "1.9rem"
+            }} 
             position={"relative"}
-            bottom={{ sm:-10, md: -12}}
-            left={{ sm: 10, md: 20, lg: 20}}
+            bottom={{ 
+              xs:-10, 
+              sm:-1, 
+              md: -12
+            }}
+            left={{ xs: 12, sm: 14, md: 20, lg: 20}}
             color={"typography.color"}
             borderRadius={"0px 0px 10px 10px"}
             sx={{
@@ -113,7 +195,7 @@ export default function SliderMoviesCoverFlow({type}) {
               WebkitBoxOrient: "vertical",
               textOverflow:"ellipsis",
               overflow:"hidden",
-              WebkitLineClamp:{ sm:"2", lg: "2"},
+              WebkitLineClamp:{ xs: "2", sm:"2", lg: "2"},
             }} gutterBottom component="div">{title}
         </Typography> 
       </SwiperSlide>)

@@ -27,7 +27,8 @@ export default function SkeletonFavorites() {
               width: "100%",
               objectFit: "cover",
               border: "inherit",
-              }}>
+              }}
+          >
             <CardMedia component="img" alt="tus favoritos" image={image} />
           </Card>   
           <Typography className="title"

@@ -44,11 +44,11 @@
 }
 
 /* --------- sliderSkeletonFavorites --------- */
-.sliderSkeletonFavorites .swiper-slide {
+.sliderSkeletonFavorites.swiper-slide {
   position: relative;
   background-color: #f92626;
   width: 50%;
-  height: 340px;
+  height: 320px;
   border-radius: 14px;
   box-shadow: 0px 0px 16px -1px #8a74fcff;
   border: 1px solid  #8a74fcff ;
@@ -59,7 +59,7 @@
   padding: 20px 0px 40px 0px;
 }
 
-.swiperFavorites {
+/* .swiperFavorites {
   position: relative;
   background-color: #f92626;
   width: 50%;
@@ -68,7 +68,64 @@
   box-shadow: 0px 0px 16px -1px #8a74fcff;
   border: 1px solid  #8a74fcff ;
 
+} */
+
+/* -------------- mobile l --------------  */
+@media (min-width: 375px) {
+ /* ------- sliderParallaxHero -------  */
+  .sliderParallaxHero.swiper{
+    height: 250px;
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after,
+  .sliderParallaxHero .swiper-button-next::after  {
+    width: 100%;
+    top: 90%;
+    font-size: 35px;
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after {
+    left: 4px;
+  }
+  .sliderParallaxHero .swiper-button-next::after {
+    left: 4px;
+  }
+
+  .swiper-pagination {
+    --swiper-pagination-bullet-width: 6px; 
+    --swiper-pagination-bullet-height: 6px; 
+    --swiper-pagination-bullet-inactive-opacity: 0.9; 
+    --swiper-pagination-bullet-horizontal-gap: 5px; 
+  }
+
+ /* ------- coverFlowMoviesHome -------  */
+  .coverFlowMoviesHome .swiper-slide{
+    height: 410px; 
+    border-radius: 20px;
+  }
+
+  .coverFlowMoviesHome.swiper{
+    padding-bottom: 60px;
+  }
+
+  .swiperFavorites.swiper-slide{
+    padding: 20px;
+    background-color: #000000;
+    width: 30%;
+    height: 300px;  
+  }
+
+  .coverFlowMoviesHome .swiper-button-prev::after, 
+  .coverFlowMoviesHome .swiper-button-next::after{
+    width: 9%;
+    font-size: 40px;
+    margin-top: -210px;
+  }
 }
+
+
+
+
 
 /* -------------- TABLET --------------  */
 @media (min-width: 768px) {
@@ -88,7 +145,9 @@
     left: 35px;
   }
 
-
+  .sliderParallaxHero .swiper-button-next::after {
+    left: -35px;
+  }
 .swiper-pagination {
   --swiper-pagination-bullet-width: 9px; 
   --swiper-pagination-bullet-height: 9px; 

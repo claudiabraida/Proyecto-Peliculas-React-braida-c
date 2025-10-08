@@ -19,7 +19,7 @@ const categorias = [
 
 export default function NavBarMovies() {
   const navigate = useNavigate();
-/* __________________ MUI __________________ */
+  /* __________________ MUI __________________ */
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -44,21 +44,27 @@ export default function NavBarMovies() {
     setAnchorElUser(null);
   };
 
-  return (
-    <>
-     <AppBar position="absolute"
+  return <>
+    <AppBar position="absolute"
       sx={{
         backgroundColor:"#000000ff", 
         boxShadow:{
+          xs: "0px -2px 28px #2335faff",
           sm: "0px -2px 30px #2335faff",
           md: "0px -1px 35px #2335faff",
           lg: "0px 3px 38px #2335faff",
         }
-      }}>
+      }}
+    >
       <Container maxWidth="xl" >
         <Toolbar disableGutters>
           {/* ------------------------ hamburger menu Nav  ------------------------ */}
-          <Box sx={{ flexGrow: 1, display: { sm: "flex", lg: "none" }}}>
+          <Box 
+            sx={{ 
+              flexGrow: 1, 
+              display: { xs: "flex",lg: "none" }
+            }}
+          >
             {/* .....  menu icon none ..... */}
             <IconButton size="large"
               aria-label="account of current user"
@@ -66,8 +72,12 @@ export default function NavBarMovies() {
               aria-haspopup="true"
               onClick={handleOpenNavMenu}
               sx={{color: "secondary.main"}}
-              >    
-              <MenuIcon sx={{fontSize:{ sm: "1.9rem", md: "2.9rem"}}} />
+            >    
+              <MenuIcon 
+                sx={{
+                  fontSize:{ xs: "1.9rem", sm: "1.98rem", md: "2.9rem" }
+                }} 
+              />
             </IconButton>
             {/* ..... menu select none ..... */}
             <Menu 
@@ -84,29 +94,42 @@ export default function NavBarMovies() {
               }}
               open={Boolean(anchorElNav)}
               onClose={handleCloseNavMenu}
-              sx={{ display: { sm: "block", lg: "none" }}}
-              >
-                
+              sx={{ 
+                display: { xs: "block", lg: "none" }
+              }}
+            >                
               {categorias.map((page) => (
-                <MenuItem key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}>
-                  <Typography sx={{ textAlign: "center", color:"prymary.main", fontSize: {sm: "1.2rem", md: "1.8rem"}}}>
+                <MenuItem key={page} 
+                  onClick={()=>handleCloseNavMenuAndNavigate(page)}
+                >
+                  <Typography 
+                    sx={{ 
+                      textAlign: "center", 
+                      color:"prymary.main", 
+                      fontSize: { xs: "1.2rem", md: "1.8rem" }
+                    }}
+                  >
                     {page}
                   </Typography>
-                </MenuItem>          
-              ))}
+                </MenuItem>))
+              }
             </Menu>            
           </Box >
 
           {/* ..... logo-avatar none ..... */}
-          <Box onClick={()=> navigate("/")} sx={{ display: { sm: "flex", lg: "none" }, mr: {sm: 2, md: 4}}}>
+          <Box onClick={()=> navigate("/")} 
+            sx={{ 
+              display:{ xs: "flex", lg: "none" }, 
+              mr:{ xs: 2, sm: 1, md: 4 }
+            }}
+          >
             <IconButton variant="h6"
               sx={{
-                // backgroundColor:"red",
-                mr:{sm:-3, md:"1"} ,
+                mr:{ xs:-4, sm:-3, md:"1" } ,
                 flexGrow: 1,
                 fontFamily: "monospace",
                 fontWeight: 700,
-                fontSize:{ sm: "1.3rem", md: "2.3rem"},
+                fontSize:{ xs: "1.1rem", sm: "1.3rem", md: "2.3rem" },
                 letterSpacing: ".3rem",
                 color: "secondary.main",
                 textDecoration: "none",
@@ -115,10 +138,10 @@ export default function NavBarMovies() {
               {/* ..... avatar image icon none ..... */}
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{sm: "25%",  md: "30%"},
-                  height:{sm: "40px", md: "65px"},
+                  width:{ xs: "30%",  sm: "28%",  md: "30%" },
+                  height:{ xs: "38px", sm: "40px", md: "65px" },
                   borderRadius:"0px", 
-                  padding:{sm: "4px",  md: "9px", lg:"9px"}
+                  padding:{ xs: "5px", md: "9px", lg:"9px" }
                 }}
               />
               BRAIDA
@@ -126,12 +149,17 @@ export default function NavBarMovies() {
           </Box>
 
           {/* ------------------------ Fixed Horizontal Nav ------------------------ */}
-          <Box onClick={()=> navigate("/")} sx={{ display: { sm: "none", lg: "flex" }, mr: 1 }} >
+          <Box onClick={()=> navigate("/")} 
+            sx={{ 
+              display:{ sm: "none", lg: "flex" }, 
+              mr: 1 
+            }} 
+          >
            {/* ..... logo-avatar ..... */} 
             <IconButton variant="h6"
               sx={{
                 mr: 2,
-                display: { sm: "none", lg: "flex" },
+                display: { xs: "none", lg: "flex" },
                 fontSize:"2.6rem",
                 fontFamily:"monospace",
                 fontWeight: 700,
@@ -141,11 +169,11 @@ export default function NavBarMovies() {
             >
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{ sm: "25%",  md: "30%", lg: "40%"},
-                  height:{ sm: "40px", md: "65px", lg: "90px"},
-                  padding:{ sm: "4px",  md: "9px", lg :"9px",
-                  borderRadius:"0px",
-                }}} 
+                  width:{ xs: "25%", md: "30%", lg: "40%" },
+                  height:{ xs: "40px", md: "65px", lg: "90px" },
+                  padding:{ xs: "4px",  md: "9px", lg :"9px" },
+                  borderRadius:"0px",              
+                }} 
               />
               BRAIDA
             </IconButton>
@@ -154,26 +182,28 @@ export default function NavBarMovies() {
           {/* ...... buttons Horizontal Nav ...... */}
           <Box 
             sx={{ 
-              flexGrow: 1, display: { sm: "none", lg: "flex" },
-              justifyContent:{ lg:"center", gap:"5px"},
+              flexGrow: 1, display: { xs: "none", lg: "flex" },
+              justifyContent:{ lg:"center", gap:"5px" },
               alignItems:"center"
             }}
           >
             {categorias.map((page) => (
-            <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
-              sx={{
-                textAlign:"center",
-                fontSize:{ lg:"1.2rem"}, my: 2,
-                color: "prymary.main", display: "block",
-                borderRadius:"20px",               
-              }}
-            > 
-              {page}
-            </Button>))}
+              <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
+                sx={{
+                  textAlign:"center",
+                  fontSize:{ lg:"1.2rem" }, 
+                  my: 2,
+                  color: "prymary.main", 
+                  display: "block",
+                  borderRadius:"20px",               
+                }}
+              > 
+                {page}
+              </Button>))
+            }
           </Box>
         </Toolbar>
       </Container>
-     </AppBar>
-    </>
-  )
+    </AppBar>
+  </>
 }

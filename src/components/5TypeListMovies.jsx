@@ -87,7 +87,7 @@ export default function TypeListMovies({type}) {
             {/* ...... icon favorite ...... */}
               <IconButton 
                 color="primary"
-                onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date})}
+                onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date, vote_average})}
               >
                 {existsInFavorites(id) 
                 ? <Favorite sx={{fontSize: { sm:"1.5rem", md: "1.8rem", lg:"1rem" }}}/> 
