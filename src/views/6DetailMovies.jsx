@@ -160,14 +160,13 @@ export default function DetailMovies() {
             <Stack 
               width={{ xs: "90%" ,lg: "70%" }}              
               position={{lg: "absolute" }}
-              // flexWrap={{ xs:"wrap" }}
               flexDirection={ "row" }
               gap={{ xs:1 , md: 1.6 , lg: 1.6 }}
               spacing={{ 
                 lg: 0,
               }}
               pl={{ lg: 5 }}
-              top={{ lg: "50%" , xl: "35%"}}
+              top={{ lg: "40%" , xl: "35%"}}
               left={{ lg: "30%" , xl: "30%"}}
 
             >
@@ -231,7 +230,7 @@ export default function DetailMovies() {
                 xs: -28 ,
                 sm: -30 ,
                 md: -60 ,
-                lg: -62 ,
+                lg: -51 ,
                 xl: -72 ,
               }}
               ml={{ 
