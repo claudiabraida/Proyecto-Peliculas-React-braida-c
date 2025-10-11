@@ -264,8 +264,8 @@ export default function DetailMovies() {
                 fontSize:{ xs: "0.89rem", sm: "0.9rem", md: "1.5rem", lg: "1.3rem", xl: "1.9rem" },
               }}
             >
-             { movieId.overview == "" ?  
-                <Typography>Información no disponible en este momento</Typography>
+             { movieId.overview == ""  ?  
+                <Typography component={"span"} >Información no disponible en este momento</Typography>
                 : movieId.overview
               }
             </Typography>
