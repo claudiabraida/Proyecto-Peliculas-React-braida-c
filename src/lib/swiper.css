@@ -61,8 +61,7 @@
 }
 
 /* -------------- MOBILE S --------------  */
-@media (min-width: 375px) {
- /* ------- sliderParallaxHero -------  */
+ /* @media (min-width: 375px) {
   .sliderParallaxHero.swiper{
     height: 242px;
   }
@@ -95,7 +94,7 @@
   }
 
  /* ------- COVER FLOW MOVIES HOME -------  */
-  .coverFlowMoviesHome .swiper-slide{
+  /* .coverFlowMoviesHome .swiper-slide{
     height: 425px; 
     border-radius: 20px;
   }
@@ -117,7 +116,7 @@
     font-size: 40px;
     margin-top: -20px;
   }
-}
+}  */ 
 
 /* -------------- TABLET --------------  */
 @media (min-width: 768px) {

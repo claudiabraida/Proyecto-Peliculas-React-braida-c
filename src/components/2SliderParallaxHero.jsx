@@ -46,7 +46,7 @@ export default function SliderParallaxHero(now_playing) {
             color={"white"} 
             pl={{ xs:2,  md: 4, lg: 3, xl: 6 }}
             pb={ 2 }
-            mt={{ xs: -22, sm: -25, md: -50, lg: -67, xl: -94 }}
+            mt={{ xs: -22, sm : -25 , md: -50, lg: -67, xl: -94 }}
           >
           {/* ..... title ..... */}
           <Typography 
