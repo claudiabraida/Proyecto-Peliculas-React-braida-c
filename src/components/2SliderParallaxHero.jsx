@@ -63,13 +63,14 @@ export default function SliderParallaxHero(now_playing) {
         </Stack>
 
         {/* ..... button ..... */}
+        </Card>
         <Button variant="outlined" 
           sx={{
             position: "absolute",
-            width:{ xs: "22%", sm: "30%", md: "20%", lg: "15%", xl: "12%", },
+            width:{ xs: "22%", sm: "22%", md: "20%", lg: "15%", xl: "12%", },
             height:{ xs:"20px", sm:"22px", md: "40px", xl: "45px" },
             fontSize:{ xs: "0.40rem", sm: "0.55rem", md: "1rem", lg: "1rem", xl: "1.3rem" },         
-            mt:{ xs: "40%", sm: "35%", md: "31%", lg: "34%", xl: "29%" },
+            top:{ xs: "75%", sm: "70%", md: "31%", lg: "80%", xl: "85%" },
             ml:{ xs: "7%", sm: "5%", md: "5%", lg: "%" },
             borderRadius:5,
             backgroundColor:"#06153de7",
@@ -78,7 +79,6 @@ export default function SliderParallaxHero(now_playing) {
           }} onClick={()=> navigate(`/movie/${id}`)}>
           ver mas...
         </Button>
-        </Card>
      </SwiperSlide>)}
     </Swiper>}
   </>
