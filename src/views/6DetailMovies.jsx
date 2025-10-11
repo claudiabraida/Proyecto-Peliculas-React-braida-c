@@ -119,7 +119,7 @@ export default function DetailMovies() {
               gap={{ xs:1 , md: 1.6 , lg: 1.6 }}
               spacing={{ lg: 0 }}
               pl={{ lg: 5 }}
-              top={{ lg: "38%" , xl: "42%"}}
+              top={{ lg: "48%" , xl: "40%"}}
               left={{ lg: "30%" , xl: "30%"}}
             >
               {
@@ -252,7 +252,7 @@ export default function DetailMovies() {
               fontWeight={{ xs: 800}}
               sx={{
                 fontSize:{ xs: "0.9rem", sm: "0.99rem", md: "1.7rem", lg: "1.5rem", xl: "1.8rem" },
-                mt:{ xs: "-20px", md: "-70px", sm: "12px", lg: "-48%", xl: "-47%" },
+                mt:{ xs: "-20px",  sm: "12px",md: "-70px", lg: "-48%", xl: "-47%" },
               }}
             >
               Sinopsis            

@@ -65,6 +65,7 @@ export default function SliderParallaxHero(now_playing) {
         {/* ..... button ..... */}
         <Button variant="outlined" 
           sx={{
+            position: "absolute",
             width:{ xs: "22%", sm: "30%", md: "20%", lg: "15%", xl: "12%", },
             height:{ xs:"20px", sm:"22px", md: "40px", xl: "45px" },
             fontSize:{ xs: "0.40rem", sm: "0.55rem", md: "1rem", lg: "1rem", xl: "1.3rem" },         
