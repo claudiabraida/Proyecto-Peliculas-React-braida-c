@@ -78,7 +78,7 @@ export default function TypeListMovies({type}) {
               <Typography
                 color="white"
                 paddingLeft={"12px"}
-                sx={{ fontSize: { xs:"0.8rem", sm: "1.6rem", md:"1rem", xl: "1.5rem" }}}
+                sx={{ fontSize: { xs:"0.8rem", sm: "1.5rem", md:"1rem", xl: "1.5rem" }}}
               >
                 {release_date ? dayjs(release_date).format('YYYY') : 'No disponible'}
               </Typography>
