@@ -27,17 +27,16 @@ export default function TypeListMovies({type}) {
   },[page])
 
   return <>
-    <Box p={3}>
+    <Box mt={2} p={2}>
       <Grid container spacing={3}>
         { movies.length == 0 ?  <CircularProgress/> 
-        : movies.map(({id, poster_path, title, original_title, release_date }) =>
+        : movies.map(({id, poster_path, title, original_title, release_date , vote_average}) =>
           
         <Grid key={id} padding={{sm:"10px", md:"1px"}} 
-          size={{ xs: 12, sm: 6 , md: 3, lg: 3, xl:2 }}>
+          size={{ xs: 12 , md: 4, lg: 3, xl:3 }}>
           <Card 
             sx={{
-              display:"block",
-              // width:{xs:"100%",sm:"100%", md:"100%" },
+              width: { xs: "90%", md: "90%",},             
               backgroundColor:"#12202bba",
               borderRadius: "10px",
               border: "1px solid  #8a74fcff",
@@ -60,12 +59,12 @@ export default function TypeListMovies({type}) {
               color="whitesmoke"
               paddingLeft={"12px"} 
               sx={{
-                fontSize: { sm:"1.6rem", md: "1.9rem", lg:"1em" },
+                fontSize: { xs: "1.2rem" , sm:"1.6rem", md: "1.1rem", lg:"1em", xl: "2rem" },
                 display:"-webkit-box",
                 WebkitBoxOrient: "vertical",
                 textOverflow:"ellipsis",
                 overflow:"hidden",
-                WebkitLineClamp:{sm:"1" }
+                WebkitLineClamp:{sm:"2" }
               }}
             >
               {title}
@@ -79,7 +78,7 @@ export default function TypeListMovies({type}) {
               <Typography
                 color="white"
                 paddingLeft={"12px"}
-                sx={{ fontSize: { xs:"1.4em", sm: "1.6em", md:"1em" }}}
+                sx={{ fontSize: { xs:"0.8rem", sm: "1.6rem", md:"1rem", xl: "1.5rem" }}}
               >
                 {release_date ? dayjs(release_date).format('YYYY') : 'No disponible'}
               </Typography>
@@ -90,16 +89,15 @@ export default function TypeListMovies({type}) {
                 onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date, vote_average})}
               >
                 {existsInFavorites(id) 
-                ? <Favorite sx={{fontSize: { sm:"1.5rem", md: "1.8rem", lg:"1rem" }}}/> 
-                : <FavoriteBorder sx={{fontSize:{ xs:"1.5em", sm:"1.8em", md:"1em"}}}/>}
+                ? <Favorite sx={{fontSize: {  xs:"1.9rem", sm:"1.8rem", md: "1.8rem", lg:"1rem" }}}/> 
+                : <FavoriteBorder sx={{fontSize:{ xs:"1.9rem", sm:"1.8rem", md:"1.8rem", lg: "1rem"}}}/>}
               </IconButton>      
             </Stack>
           </Card>
         </Grid>)}
         {/* ...... pagination ...... */}
         <Stack margin="auto" spacing={2}>
-          <Pagination 
-          
+          <Pagination          
             count={totalPages}
             page={page}
             onChange={handleChange}
@@ -107,7 +105,7 @@ export default function TypeListMovies({type}) {
             sx={{
               "& .MuiPaginationItem-root":
               {color: "#6d52f2ff", 
-                fontSize:{sm:"1.3rem", md:"2rem", lg:"1.5rem"}
+                fontSize:{ xs: "0.8rem" , sm:"1.3rem", md:"2rem", lg:"1.5rem", xl: "2rem"}
               },
               "& .Mui-selected":{ 
               border: "1.5px solid #8886f0ff"

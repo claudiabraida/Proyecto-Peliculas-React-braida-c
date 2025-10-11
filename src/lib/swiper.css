@@ -1,21 +1,23 @@
 .swiper-pagination {
   --swiper-pagination-bullet-width: 4px; 
   --swiper-pagination-bullet-height: 4px; 
-  --swiper-pagination-color: #1222ff; 
-  --swiper-pagination-bullet-inactive-color: #e4daff;
+  --swiper-pagination-color: #26e7f9; 
+  --swiper-pagination-bullet-inactive-color: #1d4870;
   --swiper-pagination-bullet-inactive-opacity: 0.9; 
   --swiper-pagination-bullet-horizontal-gap: 4px; 
 }
 /* --------- sliderParallaxHero. --------- */
 .sliderParallaxHero.swiper{
-  height: 210px; 
+  height: 255px; 
 }
 
 .sliderParallaxHero .swiper-button-prev::after, 
 .sliderParallaxHero .swiper-button-next::after{
   position: relative;
-  top: 60%;
+  top: 10%;
   font-size: 1.2rem;
+  color:  #21cfdf;
+
 }
 
 /* --------- coverFlowMoviesHome --------- */
@@ -39,14 +41,13 @@
   position: relative;
   top: -100%;
   font-size: 1.6rem;
-  color: #fffff4;
-  
+  color:  #21cfdf;  
 }
 
 /* --------- sliderSkeletonFavorites --------- */
 .sliderSkeletonFavorites.swiper-slide {
   position: relative;
-  background-color: #f92626;
+  /* background-color: #f92626; */
   width: 50%;
   height: 320px;
   border-radius: 14px;
@@ -59,29 +60,18 @@
   padding: 20px 0px 40px 0px;
 }
 
-/* .swiperFavorites {
-  position: relative;
-  background-color: #f92626;
-  width: 50%;
-  height: 340px;
-  border-radius: 4px;
-  box-shadow: 0px 0px 16px -1px #8a74fcff;
-  border: 1px solid  #8a74fcff ;
-
-} */
-
-/* -------------- mobile l --------------  */
+/* -------------- MOBILE S --------------  */
 @media (min-width: 375px) {
  /* ------- sliderParallaxHero -------  */
   .sliderParallaxHero.swiper{
-    height: 250px;
+    height: 242px;
   }
 
   .sliderParallaxHero .swiper-button-prev::after,
   .sliderParallaxHero .swiper-button-next::after  {
     width: 100%;
-    top: 90%;
-    font-size: 35px;
+    top: -40%;
+    font-size: 32px;
   }
 
   .sliderParallaxHero .swiper-button-prev::after {
@@ -91,21 +81,27 @@
     left: 4px;
   }
 
-  .swiper-pagination {
-    --swiper-pagination-bullet-width: 6px; 
-    --swiper-pagination-bullet-height: 6px; 
-    --swiper-pagination-bullet-inactive-opacity: 0.9; 
-    --swiper-pagination-bullet-horizontal-gap: 5px; 
+  .coverFlowMoviesHome .swiper-button-prev::after,
+  .coverFlowMoviesHome .swiper-button-next::after  {
+    width: 100%;
+    top: -4%;
+    font-size: 32px;
   }
 
- /* ------- coverFlowMoviesHome -------  */
+  .swiper-pagination {
+    --swiper-pagination-bullet-width: 5px; 
+    --swiper-pagination-bullet-height: 5px; 
+    --swiper-pagination-bullet-horizontal-gap: 5px;
+  }
+
+ /* ------- COVER FLOW MOVIES HOME -------  */
   .coverFlowMoviesHome .swiper-slide{
-    height: 410px; 
+    height: 425px; 
     border-radius: 20px;
   }
 
   .coverFlowMoviesHome.swiper{
-    padding-bottom: 60px;
+    padding-bottom: 50px;
   }
 
   .swiperFavorites.swiper-slide{
@@ -119,26 +115,21 @@
   .coverFlowMoviesHome .swiper-button-next::after{
     width: 9%;
     font-size: 40px;
-    margin-top: -210px;
+    margin-top: -20px;
   }
 }
 
-
-
-
-
 /* -------------- TABLET --------------  */
 @media (min-width: 768px) {
- /* ------- sliderParallaxHero -------  */
+ /* ------- SLIDER PARALLAX HERO  -------  */
   .sliderParallaxHero.swiper{
-    height: 400px;
+    height: 410px;
   }
 
   .sliderParallaxHero .swiper-button-prev::after,
   .sliderParallaxHero .swiper-button-next::after  {
-    width: 773%;
-    top: 150%;
-    font-size: 50px;
+    top: -22%;
+    font-size: 45px;
   }
 
   .sliderParallaxHero .swiper-button-prev::after {
@@ -151,11 +142,10 @@
 .swiper-pagination {
   --swiper-pagination-bullet-width: 9px; 
   --swiper-pagination-bullet-height: 9px; 
-  --swiper-pagination-bullet-inactive-opacity: 0.9; 
   --swiper-pagination-bullet-horizontal-gap: 9px; 
 }
 
- /* ------- coverFlowMoviesHome -------  */
+ /* ------- COVER FLOW MOVIES HOME -------  */
   .coverFlowMoviesHome .swiper-slide{
     height: 650px; 
     border-radius: 20px;
@@ -182,72 +172,74 @@
 
 /* -------------- DESKTOP --------------  */
 @media (min-width: 1024px) {
-  /* -------- sliderParallaxHero -------- */
+ /* ------- SLIDER PARALLAX HERO  -------  */
   .sliderParallaxHero.swiper{
-    height: 480px;
+    height: 570px;
   }
 
-  .sliderParallaxHero .swiper-button-prev::after {
-    width: 773%;
-    top: 150%;
-    left: 35px;
+
+  .sliderParallaxHero .swiper-button-prev::after,
+  .sliderParallaxHero .swiper-button-next::after  {
+    top: -22%;
     font-size: 50px;
   }
 
-  .sliderParallaxHero .swiper-button-next::after {
-    width: 773%;
-    top: 150%;
-    left: -35px;
-    font-size: 50px;
-  }
-
-  /* -------- coverFlowMoviesHome -------- */
+ /* ------- COVER FLOW MOVIES HOME -------  */
   .coverFlowMoviesHome.swiper{
     width: 100%;
   }
 
  .coverFlowMoviesHome .swiper-slide{
     width: 35%;
-    height: 790px;
+    height: 820px;
     bottom: 5px;
   }
 
-  .coverFlowMoviesHome .swiper-button-prev::after {
-    width: 773%;
-    top: -90%;
-    left: 35px;
-    font-size: 90px;
-  }
-
-  .coverFlowMoviesHome .swiper-button-next::after{
-    width: 773%;
-    top: -90%;
-    left: -35px;
-    font-size: 90px;
-  };
-
-};
+}
 
 /* -------------- LARGE DESKTOP --------------  */
 @media (min-width:1440px) {
-
-  .sliderParallaxHero.swiper{
-    background-color: #f92626;
-    height: 600px;
-  };
-
-  .sliderParallaxHero .swiper-slide{
-    /* background-color: #f92626; */
-    height: 690px;
-  };
-
+  
   .coverFlowMoviesHome .swiper-slide{
-    /* background-color: #ecd4d4; */
     height: 890px;
-  };
+  }
+
+  .sliderParallaxHero .swiper-button-prev::after,
+  .sliderParallaxHero .swiper-button-next::after  {
+    top: 22%;
+    font-size: 70px;
+  }
+
+  .swiper-pagination {
+    --swiper-pagination-bullet-width: 12px; 
+    --swiper-pagination-bullet-height: 12px; 
+    --swiper-pagination-bullet-horizontal-gap: 12px; 
+  }
+
+ /* ------- COVER FLOW MOVIES HOME -------  */
+  .coverFlowMoviesHome.swiper{
+    width: 100%;
+  }
+
+ .coverFlowMoviesHome .swiper-slide{
+    height: 970px;
+  }
+
+  .coverFlowMoviesHome .swiper-button-prev::after, 
+  .coverFlowMoviesHome .swiper-button-next::after{
+    width: "20%";
+    font-size: 70px;
+    margin-top: -210px;
+  }
+
+  .coverFlowMoviesHome .swiper-button-prev::after {
+    left: 10px;
+  }
+
+  .coverFlowMoviesHome .swiper-button-next::after {
+    left: -50px;
+  }
+
 
 }
-
-
-
 

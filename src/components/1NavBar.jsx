@@ -53,6 +53,7 @@ export default function NavBarMovies() {
           sm: "0px -2px 30px #2335faff",
           md: "0px -1px 35px #2335faff",
           lg: "0px 3px 38px #2335faff",
+          xl: "0px 5px 40px #2335faff",
         }
       }}
     >
@@ -138,7 +139,7 @@ export default function NavBarMovies() {
               {/* ..... avatar image icon none ..... */}
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{ xs: "30%",  sm: "28%",  md: "30%" },
+                  width:{ xs: "30%",  sm: "28%",  md: "30%"},
                   height:{ xs: "38px", sm: "40px", md: "65px" },
                   borderRadius:"0px", 
                   padding:{ xs: "5px", md: "9px", lg:"9px" }
@@ -158,9 +159,9 @@ export default function NavBarMovies() {
            {/* ..... logo-avatar ..... */} 
             <IconButton variant="h6"
               sx={{
-                mr: 2,
+                mr: {lg: 2, xl: 5} ,
                 display: { xs: "none", lg: "flex" },
-                fontSize:"2.6rem",
+                fontSize: { xl: "3.2rem"},
                 fontFamily:"monospace",
                 fontWeight: 700,
                 color:"secondary.main",
@@ -169,9 +170,9 @@ export default function NavBarMovies() {
             >
               <Avatar alt="ícono de películas" src={image}
                 sx={{
-                  width:{ xs: "25%", md: "30%", lg: "40%" },
-                  height:{ xs: "40px", md: "65px", lg: "90px" },
-                  padding:{ xs: "4px",  md: "9px", lg :"9px" },
+                  width:{ xs: "25%", md: "30%", lg: "40%", xl: "45%"  },
+                  height:{ xs: "40px", md: "65px", lg: "90px", xl: "120px"  },
+                  padding:{ xs: "4px",  md: "9px", lg :"9px", xl: "11px"  },
                   borderRadius:"0px",              
                 }} 
               />
@@ -184,6 +185,7 @@ export default function NavBarMovies() {
             sx={{ 
               flexGrow: 1, display: { xs: "none", lg: "flex" },
               justifyContent:{ lg:"center", gap:"5px" },
+              gap: {xl: "7px"}, 
               alignItems:"center"
             }}
           >
@@ -191,7 +193,7 @@ export default function NavBarMovies() {
               <Button variant="outlined" key={page} onClick={()=>handleCloseNavMenuAndNavigate(page)}
                 sx={{
                   textAlign:"center",
-                  fontSize:{ lg:"1.2rem" }, 
+                  fontSize:{ lg:"1.2rem",  xl:"1.8rem"  }, 
                   my: 2,
                   color: "prymary.main", 
                   display: "block",

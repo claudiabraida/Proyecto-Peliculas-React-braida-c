@@ -1,7 +1,5 @@
 import { Box, Grid, Typography } from "@mui/material";
 import TypeListMovies from "../components/5TypeListMovies";
-import Footer from "../components/7Footer";
-
 export default function TypeNewMovies() {
 
   return <>

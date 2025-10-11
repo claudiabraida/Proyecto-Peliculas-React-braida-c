@@ -44,13 +44,13 @@ export default function Search() {
           onChange={(e)=> searchTitleMovie(e.target.value)} type="text"
         />
       </Box>
-       { movies.length == 0 ? <Stack position={"relative"} top={{mobile:"-20px", }} ml={{mobile:"14%"}} > <img src={image} alt="icono de películas" /> </Stack>
+       { movies.length == 0 ? <Stack position={"relative"} top={{xs:"-20px", }} ml={{xs:"14%"}} > <img src={image} alt="icono de películas" /> </Stack>
        : movies.map(({id, poster_path, title, original_title, release_date }) =>
         <Grid  top={"-50px"} key={id}
-          padding={{mobile:"10px", desktop:"1px"}}
-          size={{ mobile: 12, tablet: 6 , desktop: 3, largeDesktop: 4 }}>
+          padding={{ xs:"10px", lg:"1px"}}
+          size={{ xs: 12, md: 6 , lg: 3, xl: 4 }}>
           <Card sx={{
-            width:{mobile:"80%", desktop:"100%" },
+            width:{xs: "50%",  md:"80%", lg:"100%" },
             backgroundColor:"#12202bba",
             borderRadius: "10px",
             border: "1px solid  #8a74fcff",
@@ -71,12 +71,12 @@ export default function Search() {
               width="100%" pt={"8px"}
               color="whitesmoke"
               paddingLeft={"12px"}
-              sx={{fontSize: { mobile:"1.6em", tablet: "1.9em" },
+              sx={{fontSize: { xs:"1rem", md: "1.9rem" },
                 display:"-webkit-box",
                 WebkitBoxOrient: "vertical",
                 textOverflow:"ellipsis",
                 overflow:"hidden",
-                WebkitLineClamp:{tablet:"1" }
+                WebkitLineClamp:{xs :"2" }
               }}>
               {title}
             </Typography>
@@ -87,7 +87,7 @@ export default function Search() {
               <Typography
                 color="white"
                 paddingLeft={"12px"}
-                sx={{ fontSize: { mobile:"1.4rem", tablet: "1.6rem" }}}
+                sx={{ fontSize: { xs:"1rem", md: "1.6rem" }}}
               >
                 {release_date ? dayjs(release_date).format('YYYY') : 'No disponible'}
               </Typography>
@@ -96,8 +96,8 @@ export default function Search() {
                 onClick={()=> toogleFavorite({ id, poster_path, title, original_title, release_date})}
               >
                 {existsInFavorites(id)
-                ? <Favorite sx={{fontSize: { mobile:"1.5rem", tablet: "1.8rem" }}}/>
-                : <FavoriteBorder sx={{fontSize:{ mobile:"1.5rem", tablet:"1.8rem"}}}/>}
+                ? <Favorite sx={{fontSize: { xs:"1.5rem", md: "1.8rem" }}}/>
+                : <FavoriteBorder sx={{fontSize:{ xs:"1.5rem", md:"1.8rem"}}}/>}
               </IconButton>
             </Stack>
           </Card>
