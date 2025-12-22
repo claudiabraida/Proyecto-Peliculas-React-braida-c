@@ -16,7 +16,6 @@ import DetailMovies from "../views/6DetailMovies";
 
 /* ************************************** */
 export default function RouterMovies() {
-  // console.log("ESTAS POR ACÁ?????")
   return <>
     <BrowserRouter>
       <NavBar/>

@@ -10,7 +10,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import dayjs from 'dayjs';
 
 export default function SliderParallaxHero(now_playing) {
-  // console.log("HAY ALGUIEN AHÍ????")
   const { getListMovies, movies } = useMovies();
   const navigate = useNavigate();
   const swiperEffect = useSwiperSlidersConfig("parallax");

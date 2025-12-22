@@ -54,28 +54,3 @@ const FavoritesContextProvider = ({children}) => {
 }
     
 export default FavoritesContextProvider
-
-  // function existeFavoritos(id) {
-  //   const existe = favorites.some(elem => elem.id === id)
-  //   return existe
-  // }
-
-  // function addToFavorite(movie) {
-  //   console.log("agregar por fa")
-  //   if(existeFavoritos(movie.id)) {
-  //     const newMovie = favorites.map(movieInCard => {
-  //       if(movieInCard.id === movie.id) {
-  //         return {
-  //           ...movieInCard
-  //         }
-  //       } else {
-  //         return movieInCard
-  //       }
-  //     })
-  //     setFavorites(newMovie)
-  //   } else {
-  //     console.log("MOVIEEE", { ...movie})
-  //     const addMovie = { ...movie}
-  //     setFavorites([...favorites, addMovie])
-  //   }
-  // }

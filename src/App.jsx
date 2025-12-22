@@ -35,7 +35,6 @@ const theme = createTheme({
 })
 
 function App() {
-  // console.log("ME VES")
   return (
   <FavoriteContextProvider>
     <ThemeProvider theme={theme}>
